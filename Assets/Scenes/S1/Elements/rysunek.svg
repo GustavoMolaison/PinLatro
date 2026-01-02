@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="rysunek.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.71574074"
+     inkscape:cx="959.84476"
+     inkscape:cy="540"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect5"
+       is_visible="true"
+       lpeversion="1.3"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       uniform="false" />
+  </defs>
+  <g
+     inkscape:label="Warstwa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path5"
+       style="fill:#008080;stroke-width:0.264583"
+       d="M 117.71219 183.56244 C 116.82683 187.1171 118.38177 191.13222 121.55795 194.87441 C 127.78075 202.20613 140.22595 208.49028 152.60981 208.98311 C 164.99366 209.47594 177.3156 204.17735 183.47666 197.12285 C 186.82909 193.28427 188.35733 188.9263 187.05887 184.99594 A 36.966366 34.193886 0 0 1 152.6713 206.64217 A 36.966366 34.193886 0 0 1 117.71219 183.56244 z "
+       inkscape:export-filename="Ring.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       id="path4"
+       style="fill:#000000;stroke-width:0.264583"
+       d="M 152.6713 138.25409 A 36.966366 34.193886 0 0 0 115.70457 172.44787 A 36.966366 34.193886 0 0 0 152.6713 206.64217 A 36.966366 34.193886 0 0 0 189.63752 172.44787 A 36.966366 34.193886 0 0 0 152.6713 138.25409 z M 152.6713 158.21618 A 13.307881 14.232053 0 0 1 156.11554 158.70091 A 13.307881 14.232053 0 0 1 157.76401 159.29932 A 13.307881 14.232053 0 0 1 160.77262 161.15709 A 13.307881 14.232053 0 0 1 165.86533 170.5901 A 13.307881 14.232053 0 0 1 165.97902 172.44787 A 13.307881 14.232053 0 0 1 165.86533 174.30564 A 13.307881 14.232053 0 0 1 165.10103 177.46979 A 13.307881 14.232053 0 0 1 163.82411 180.15903 A 13.307881 14.232053 0 0 1 162.08158 182.51134 A 13.307881 14.232053 0 0 1 162.08106 182.51186 A 13.307881 14.232053 0 0 1 159.32516 184.77322 A 13.307881 14.232053 0 0 1 154.40815 186.55812 A 13.307881 14.232053 0 0 1 152.6713 186.68008 A 13.307881 14.232053 0 0 1 150.93446 186.55812 A 13.307881 14.232053 0 0 1 150.93394 186.55812 A 13.307881 14.232053 0 0 1 149.22707 186.19535 A 13.307881 14.232053 0 0 1 149.22655 186.19535 A 13.307881 14.232053 0 0 1 141.14591 179.56423 A 13.307881 14.232053 0 0 1 139.36307 172.44787 A 13.307881 14.232053 0 0 1 139.81679 168.76438 A 13.307881 14.232053 0 0 1 142.11329 163.7838 A 13.307881 14.232053 0 0 1 143.26102 162.3844 A 13.307881 14.232053 0 0 1 149.22707 158.70091 A 13.307881 14.232053 0 0 1 152.6713 158.21618 z " />
+    <ellipse
+       style="fill:#008080;stroke-width:0.264583"
+       id="ellipse6-8"
+       cx="172.32246"
+       cy="108.42372"
+       rx="13.307881"
+       ry="14.232053" />
+  </g>
+</svg>
