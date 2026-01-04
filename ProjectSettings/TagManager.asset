@@ -9,6 +9,7 @@ TagManager:
   - Pinball
   - TimerStart
   - GameOverCanvas
+  - LaunchPad
   layers:
   - Default
   - TransparentFX

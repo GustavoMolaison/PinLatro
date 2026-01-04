@@ -2,45 +2,21 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="47.524746mm"
+   height="296.83978mm"
+   viewBox="0 0 47.524746 296.83978"
    version="1.1"
    id="svg1"
-   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
-   sodipodi:docname="LeftWall.svg"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview1"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     inkscape:document-units="mm"
-     inkscape:zoom="0.50610513"
-     inkscape:cx="960.27479"
-     inkscape:cy="427.77673"
-     inkscape:window-width="1175"
-     inkscape:window-height="981"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="layer1" />
   <defs
      id="defs1" />
   <g
-     inkscape:label="Warstwa 1"
-     inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-244.13961,18.113625)">
     <path
        id="rect1"
        style="stroke-width:0.264583"
-       d="M 291.66437 -18.113623 L 244.13962 -17.746204 L 244.13962 260.49986 L 267.12788 278.72614 L 267.12788 164.73155 C 267.12788 137.93855 212.74119 59.577354 291.66437 -18.113623 z " />
+       d="m 291.66437,-18.113623 -47.52475,0.367419 V 260.49986 l 22.98826,18.22628 -1.04557,-32.42648 c -22.98826,-8.54343 11.28244,-28.81793 12.02402,-61.17956 0.45992,-20.07046 -65.36514,-125.542746 13.55804,-203.233723 z" />
   </g>
 </svg>

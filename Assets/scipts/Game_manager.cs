@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using TMPro;
 using UnityEngine;
 public class Game_manager : MonoBehaviour
@@ -28,27 +29,28 @@ public class Game_manager : MonoBehaviour
     }
     private void Start()
     {
+// Update when player goes into next stage
         UpgradesRoundEnd += Upgrade_system.Instance.ResetBase;
 
-
+// One time events when player hits goal
         Score_system.Instance.onGoalAchiev += GoalCleared;
-       
 
+// Events when player hits upgrading score demand
         Upgrade_system.Instance.on_upgrade_cap_hit += Up_cap_achiev_manager;
-
+// Events when timer hits 0:00
         Timer.Instance.OnTimerEnd += ResetSystem;
     }
 
     void OnDestroy()
     {
 
-        //Score_system_ref.OnTimerEnd -= ResetSystem;
+        Score_system.Instance.OnTimerEnd -= Upgrade_system.Instance.ResetBase;
+
         Score_system.Instance.onGoalAchiev -= GoalCleared;
 
         Upgrade_system.Instance.on_upgrade_cap_hit -= Up_cap_achiev_manager;
 
-
-            Timer.Instance.OnTimerEnd -= ResetSystem;
+        Timer.Instance.OnTimerEnd -= ResetSystem;
     }
 
 
@@ -74,8 +76,8 @@ public class Game_manager : MonoBehaviour
     public void ResetSystem()
     {
         allBalls[0].BallToSpawn();
-        Debug.Log("TYLKO RAZ");
 
+        
         if (Score_system.Instance.stagepassed == false)
         {
             Debug.Log("stagepassed false");
@@ -101,8 +103,9 @@ public class Game_manager : MonoBehaviour
     {
         //Debug.Log("No gameover nie");
         //Debug.Log(Score_system_ref.goalcleared);
-        if (Score_system.Instance.goalcleared == false)
+        if (Score_system.Instance.stagepassed == false)
         {
+            Debug.Log("GAMEOVER");
             UIManager.Instance.ShowCanvasGameOver();
         }
         Timer.Instance.StopTimer();
