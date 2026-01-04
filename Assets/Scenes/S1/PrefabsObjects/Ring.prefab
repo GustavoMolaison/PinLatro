@@ -1,0 +1,236 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &31934727341981920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5573140525089855505}
+  - component: {fileID: 3029113305178859489}
+  m_Layer: 0
+  m_Name: BlueBounce
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5573140525089855505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31934727341981920}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 126468937336144472}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &3029113305178859489
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31934727341981920}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.35111836, y: -0.097836494}
+  - {x: -0.3518795, y: -0.13421917}
+  - {x: -0.34636799, y: -0.15438366}
+  - {x: -0.3354372, y: -0.1787672}
+  - {x: -0.30496183, y: -0.22073555}
+  - {x: -0.25185534, y: -0.2674713}
+  - {x: -0.20782235, y: -0.29462433}
+  - {x: -0.17917404, y: -0.30917072}
+  - {x: -0.14192095, y: -0.32423496}
+  - {x: -0.09904057, y: -0.33804607}
+  - {x: -0.050620317, y: -0.34909153}
+  - {x: 0.008099586, y: -0.35480118}
+  - {x: 0.10057755, y: -0.34697628}
+  - {x: 0.20896493, y: -0.31031513}
+  - {x: 0.25058895, y: -0.28561687}
+  - {x: 0.28901112, y: -0.25532627}
+  - {x: 0.29867452, y: -0.24585533}
+  - {x: 0.33806705, y: -0.19401836}
+  - {x: 0.34676126, y: -0.16440296}
+  - {x: 0.34858844, y: -0.14081764}
+  - {x: 0.34702998, y: -0.12463665}
+  - {x: 0.34373835, y: -0.11423683}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!1001 &8688273438229884347
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -3888481672020999207, guid: d0426c370ba16934486a708056771252, type: 3}
+      propertyPath: m_Name
+      value: Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742538545776668643, guid: d0426c370ba16934486a708056771252, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742538545776668643, guid: d0426c370ba16934486a708056771252, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742538545776668643, guid: d0426c370ba16934486a708056771252, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742538545776668643, guid: d0426c370ba16934486a708056771252, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 19.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742538545776668643, guid: d0426c370ba16934486a708056771252, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742538545776668643, guid: d0426c370ba16934486a708056771252, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742538545776668643, guid: d0426c370ba16934486a708056771252, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742538545776668643, guid: d0426c370ba16934486a708056771252, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742538545776668643, guid: d0426c370ba16934486a708056771252, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742538545776668643, guid: d0426c370ba16934486a708056771252, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742538545776668643, guid: d0426c370ba16934486a708056771252, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742538545776668643, guid: d0426c370ba16934486a708056771252, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8742538545776668643, guid: d0426c370ba16934486a708056771252, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5573140525089855505}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -3888481672020999207, guid: d0426c370ba16934486a708056771252, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6508014229152446291}
+  m_SourcePrefab: {fileID: 7243324766535440047, guid: d0426c370ba16934486a708056771252, type: 3}
+--- !u!4 &126468937336144472 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8742538545776668643, guid: d0426c370ba16934486a708056771252, type: 3}
+  m_PrefabInstance: {fileID: 8688273438229884347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3646688839331032674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3888481672020999207, guid: d0426c370ba16934486a708056771252, type: 3}
+  m_PrefabInstance: {fileID: 8688273438229884347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!68 &6508014229152446291
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3646688839331032674}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.35834053, y: -0.097387314}
+  - {x: -0.37333915, y: -0.028798103}
+  - {x: -0.36987534, y: 0.07479763}
+  - {x: -0.33313134, y: 0.18286896}
+  - {x: -0.2603375, y: 0.27013302}
+  - {x: -0.18293923, y: 0.31987}
+  - {x: -0.083880246, y: 0.3531208}
+  - {x: 0.013911754, y: 0.361166}
+  - {x: 0.113382906, y: 0.34406567}
+  - {x: 0.18680225, y: 0.31386662}
+  - {x: 0.24547222, y: 0.27476025}
+  - {x: 0.29156938, y: 0.2263689}
+  - {x: 0.32532173, y: 0.17890644}
+  - {x: 0.3606191, y: 0.11386204}
+  - {x: 0.37578595, y: 0.032660484}
+  - {x: 0.37286013, y: -0.039559364}
+  - {x: 0.3447517, y: -0.11097622}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0

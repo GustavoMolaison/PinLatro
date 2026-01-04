@@ -9,7 +9,7 @@
    id="svg1"
    sodipodi:docname="LeftInnerWall.svg"
    inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
-   inkscape:export-filename="CircleLuck.svg"
+   inkscape:export-filename="RightInnerWall.svg"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -28,7 +28,7 @@
      inkscape:document-units="mm"
      inkscape:zoom="0.90962656"
      inkscape:cx="423.80029"
-     inkscape:cy="1077.9149"
+     inkscape:cy="374.32944"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -53,7 +53,7 @@
        id="rect3"
        style="fill:#aa4400;stroke-width:0.264583"
        d="m 118.66044,85.601893 -15.08797,30.648257 -15.087963,30.64774 0.362251,20.62252 17.193782,19.41225 21.34909,-9.62732 0.48317,-21.80451 19.28461,1.6e-4 c -1.14066,-21.84864 -3.68297,-49.79047 -9.11107,-61.055709 z"
-       sodipodi:nodetypes="cccccccccccc" />
+       sodipodi:nodetypes="cccccccccc" />
     <path
        id="rect4"
        style="fill:#aa4400;stroke-width:0.264583"
