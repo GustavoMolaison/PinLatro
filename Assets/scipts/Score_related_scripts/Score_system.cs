@@ -150,6 +150,29 @@ public class Score_system : MonoBehaviour
 
     }
 
+   public void AddpointUpgrades(int amount, Ball BallRef)
+    {
+        currentscore += amount;
+        alltimescore += amount;
+        UIManager.Instance.ScoreUpdateDisplay();
+
+
+        OnScoreChanged.Invoke();
+
+
+        if (currentscore >= goalscore && stagepassed == false)
+        {
+            UIManager.Instance.ChangeGoalTextColor(Color.green);
+
+            goalcleared = true;
+            stagepassed = true;
+
+
+        }
+
+        UIManager.Instance.ShowAddedPointsUpgrades(amount, BallRef);
+    }
+
     
 
     

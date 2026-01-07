@@ -71,7 +71,7 @@ public class Sliding : MonoBehaviour
         float horizontalSpeed = Ballrb.linearVelocity.x;
         float speed = Ballrb.linearVelocity.magnitude;
 
-        Debug.Log(speed);
+        //Debug.Log(speed);
 
         var shapeModule = SparklesParticle.shape;
         var velocity = SparklesParticle.velocityOverLifetime;
@@ -109,7 +109,7 @@ public class Sliding : MonoBehaviour
             ParticlesOnOf(false);
            }
 
-          Score_system.Instance.Addpoint(sliding_bonus);
+          Score_system.Instance.AddpointUpgrades(sliding_bonus, Ball_ref);
 
           sliding_bonus = 0;
           sliding_bonus_f = 0;

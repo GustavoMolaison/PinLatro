@@ -22,6 +22,7 @@ public class Ball : MonoBehaviour
     //List<Action> ball_mechanics = new List<Action>();
     public Action ball_mechanics;
     public event Action<Collision2D, Ball> OnHitEvent;
+    public event Action OnHitEventNoParam;
     public event Action<Collision2D, Ball> WhileColliding;
     public event Action<Collision2D, Ball> NoMoreColliding;
     
@@ -79,6 +80,7 @@ public class Ball : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D collision) 
     {
         OnHitEvent?.Invoke(collision, this);
+        OnHitEventNoParam?.Invoke();
 
     }
     public void OnCollisionStay2D(Collision2D collision)

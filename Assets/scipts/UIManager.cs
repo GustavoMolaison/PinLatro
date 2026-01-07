@@ -10,9 +10,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text time_text;
     [SerializeField] private TMP_Text StageText;
     [SerializeField] private TMP_Text Upgrade_score_info;
+    
     [SerializeField] private CanvasGroup gameOverCanvasGroup;
     [SerializeField] public CanvasGroup skipToNextRoundGroup;
     [SerializeField] private CanvasGroup upgrade_canvas_group;
+
+    public GameObject AddedPointsUpgradeText;
 
     private int minutes_text;
     private int seconds_text;
@@ -149,6 +152,24 @@ public class UIManager : MonoBehaviour
         Upgrade_score_info.SetText("Next Upgrade: {0}", Upgrade_system.Instance.upgrade_cap);
     }
 
+    public void ShowAddedPointsUpgrades(int addedPoints, Ball ball)
+    {
+        Vector2 BallCords = ball.transform.position;
+        BallCords.y += 2f;
 
+        GameObject newText = Instantiate(AddedPointsUpgradeText, BallCords, Quaternion.identity);
+
+        var tmp = newText.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        
+        if (tmp != null)
+        {
+            tmp.transform.position = BallCords;
+            Debug.Log("xdnull");
+            tmp.SetText($"+{addedPoints}");
+        }
+
+        Destroy(newText, 1f);
+        Debug.Log("xd");
+    }
 }
 

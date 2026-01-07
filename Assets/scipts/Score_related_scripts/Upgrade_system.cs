@@ -87,7 +87,8 @@ public class Upgrade_system : MonoBehaviour
         upgrades_listed = new Dictionary<upgrade_type, Action<Ball>>
         {
                 {upgrade_type.A, (value) => Portalball.Instance.AddPortal(value)},
-                {upgrade_type.B, (value) => Sliding.Instance.Add_Sliding(value)}
+                {upgrade_type.B, (value) => Sliding.Instance.Add_Sliding(value)},
+                {upgrade_type.C, (value) => Racer.Instance.AddRacer(value)}
                 //{upgrade_type.B, () => Sliding.Instance.Upgrade_Sliding()}
         };
 
@@ -167,9 +168,7 @@ public class Upgrade_system : MonoBehaviour
     }
     public void UpgradeButton2()
     {
-        //Action functionToAdd upgrades_listed[upgrade_type.B];
         upgrades_listed[upgrade_type.B](AllBalls[0]);
-        //Ball_ref.ball_mechanics += functionToAdd;
         UIManager.Instance.HideCanvasGroup(upgrade_canvas_group);
         Time.timeScale = 1f;
         Debug.Log("noklikam2");
@@ -177,7 +176,8 @@ public class Upgrade_system : MonoBehaviour
 
     public void UpgradeButton3()
     {
-        //upgrades_listed[upgrade_type.A]();
+        upgrades_listed[upgrade_type.C](AllBalls[0]);
+        Debug.Log("upgrade3");
         UIManager.Instance.HideCanvasGroup(upgrade_canvas_group);
         Time.timeScale = 1f;
         Debug.Log("noklikam3");

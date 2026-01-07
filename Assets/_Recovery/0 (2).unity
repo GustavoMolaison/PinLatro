@@ -198,11 +198,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8764646152208116531, guid: 2dcbf3853d87bed449cfb3eb4d79ebff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.1
+      value: -14.5
       objectReference: {fileID: 0}
     - target: {fileID: 8764646152208116531, guid: 2dcbf3853d87bed449cfb3eb4d79ebff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.6
+      value: -11.22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2618,10 +2618,6 @@ PrefabInstance:
       propertyPath: upgrade_canvas_group
       value: 
       objectReference: {fileID: 2097307813}
-    - target: {fileID: 5188852912540661283, guid: acefcb7615aaa5b41b02ec74078e0960, type: 3}
-      propertyPath: AddedPointsUpgradeText
-      value: 
-      objectReference: {fileID: 3296214502791809835, guid: de8f90ecef874db42abd0a0be035bb4e, type: 3}
     - target: {fileID: 7611039139138499006, guid: acefcb7615aaa5b41b02ec74078e0960, type: 3}
       propertyPath: 'allBalls.Array.data[0]'
       value: 
@@ -2632,10 +2628,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1238635473424557517, guid: acefcb7615aaa5b41b02ec74078e0960, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1167659495}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acefcb7615aaa5b41b02ec74078e0960, type: 3}
 --- !u!1001 &913191623
@@ -3050,51 +3043,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 835002688}
   m_SourcePrefab: {fileID: 100100000, guid: b7c98c0e03cd89740a6cccd7c2d58289, type: 3}
---- !u!1 &1167659494
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1167659495}
-  - component: {fileID: 1167659496}
-  m_Layer: 0
-  m_Name: Racer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1167659495
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167659494}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2068571402}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1167659496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167659494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3848b8bdb5c1ad142a42125947ae0576, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Racer
-  PointsMultiplier: 0.1
 --- !u!4 &1180738943 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7266336368862724062, guid: 0be03974e8331e44086a32350fcdb987, type: 3}
@@ -3778,11 +3726,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &2068571402 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1238635473424557517, guid: acefcb7615aaa5b41b02ec74078e0960, type: 3}
-  m_PrefabInstance: {fileID: 911975193}
-  m_PrefabAsset: {fileID: 0}
 --- !u!225 &2097307813 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 4859264356415093076, guid: be1af9977f61cdc47a0d74072648967b, type: 3}
