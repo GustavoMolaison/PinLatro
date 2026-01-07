@@ -10,8 +10,9 @@ public class Game_manager : MonoBehaviour
     //public Ball ball_ref;
 
     public List<Ball> allBalls;
-    public static Game_manager Instance { get; private set; }
+
     public event Action UpgradesRoundEnd;
+    public static Game_manager Instance { get; private set; }
 
 
     void Awake()
@@ -56,6 +57,7 @@ public class Game_manager : MonoBehaviour
 
     private void Update()
     {
+        //Debug.Log(allBalls[0].ball_out_of_pit);
         if (Input.GetKeyDown(KeyCode.R) && Score_system.Instance.stagepassed == true)
         {
             //Debug.Log("RRR");

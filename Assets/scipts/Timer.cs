@@ -41,10 +41,15 @@ public class Timer : MonoBehaviour
 
         else
         {
-            if (Score_system.Instance.ball_out_of_pit)
+            foreach (var ball in Game_manager.Instance.allBalls)
             {
-                StartTimer();
+                if (ball.ball_out_of_pit)
+                {
+                    StartTimer();
+                    break; 
+                }
             }
+            
         }
 
     }
@@ -65,7 +70,10 @@ public class Timer : MonoBehaviour
     public void StopTimer()
     {
         Score_system.Instance.isRunning = false;
-        Score_system.Instance.ball_out_of_pit = false;
+        foreach (var ball in Game_manager.Instance.allBalls)
+        {
+            ball.ball_out_of_pit = false;
+        }
     }
 
     public void ClockFrameRun()

@@ -25,9 +25,9 @@ public class Ball : MonoBehaviour
     public event Action OnHitEventNoParam;
     public event Action<Collision2D, Ball> WhileColliding;
     public event Action<Collision2D, Ball> NoMoreColliding;
-    
 
 
+    public bool ball_out_of_pit = false;
     public static Ball Instance { get; private set; }
 
     void Start()
@@ -66,14 +66,17 @@ public class Ball : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
-
+        
         if (other.CompareTag("RespawnLine"))
         {
             BallToSpawn();
         }
         if (other.CompareTag("TimerStart"))
         {
-            Score_system.Instance.ball_out_of_pit = true;
+            
+            
+            ball_out_of_pit = !ball_out_of_pit;
+           
         }
     }
 
@@ -95,7 +98,7 @@ public class Ball : MonoBehaviour
 
     public void BallToSpawn() {
         transform.localPosition = new Vector2(0, 0);
-        Score_system.Instance.ball_out_of_pit = false;
+        ball_out_of_pit = false;
     }
 
 }

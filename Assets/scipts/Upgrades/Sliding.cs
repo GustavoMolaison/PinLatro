@@ -80,6 +80,7 @@ public class Sliding : MonoBehaviour
         shapeModule.rotation = new Vector3(0, 0, angle - 90f);
 
         emission.rateOverTime = speed;
+        
 
         if (horizontalSpeed > 0)
         {

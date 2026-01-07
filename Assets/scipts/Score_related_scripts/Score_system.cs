@@ -1,12 +1,13 @@
 using UnityEngine;
 using TMPro;
 using System;
+
  
 public class Score_system : MonoBehaviour
 {
 
     //public Ball ball_ref;
-    public Game_manager Game_manager_ref;
+    //public Game_manager Game_manager_ref;
 
     public event Action OnTimerEnd;
     public event Action onGoalAchiev;
@@ -29,7 +30,7 @@ public class Score_system : MonoBehaviour
 
      // booleans changed in other scripts
     public bool goalcleared { get; set; }
-    public bool ball_out_of_pit { get; set; }
+    
     public bool isRunning { get; set; } = false;
     public bool stagepassed { get; set; } = false;
 
@@ -87,8 +88,11 @@ public class Score_system : MonoBehaviour
             //stagepassed = false;
             
             isRunning = false;
-            ball_out_of_pit = false;
 
+            foreach (var ball in Game_manager.Instance.allBalls)
+            {
+                ball.ball_out_of_pit = false;
+            }
 
             currentscore = 0;
             goalscore += goalscore * GoalscoreModifier;
@@ -112,7 +116,11 @@ public class Score_system : MonoBehaviour
             //stagepassed = false;
 
             isRunning = false;
-            ball_out_of_pit = false;
+
+            foreach (var ball in Game_manager.Instance.allBalls)
+            {
+                ball.ball_out_of_pit = false;
+            }
 
             currentscore = 0;
             goalscore = goalscore_custom;
@@ -132,6 +140,7 @@ public class Score_system : MonoBehaviour
     {
         currentscore += amount;
         alltimescore += amount;
+        Debug.Log("HITSCORE");
         UIManager.Instance.ScoreUpdateDisplay();
 
         
@@ -152,25 +161,34 @@ public class Score_system : MonoBehaviour
 
    public void AddpointUpgrades(int amount, Ball BallRef)
     {
-        currentscore += amount;
-        alltimescore += amount;
-        UIManager.Instance.ScoreUpdateDisplay();
-
-
-        OnScoreChanged.Invoke();
-
-
-        if (currentscore >= goalscore && stagepassed == false)
+        
+        if (BallRef.ball_out_of_pit)
         {
-            UIManager.Instance.ChangeGoalTextColor(Color.green);
 
-            goalcleared = true;
-            stagepassed = true;
+            
+            currentscore += amount;
+            alltimescore += amount;
+            UIManager.Instance.ScoreUpdateDisplay();
 
 
+            OnScoreChanged.Invoke();
+
+
+            if (currentscore >= goalscore && stagepassed == false)
+            {
+                UIManager.Instance.ChangeGoalTextColor(Color.green);
+
+                goalcleared = true;
+                stagepassed = true;
+
+
+            }
+            if( amount > 1f)
+            {
+                UIManager.Instance.ShowAddedPointsUpgrades(amount, BallRef);
+            }
+            
         }
-
-        UIManager.Instance.ShowAddedPointsUpgrades(amount, BallRef);
     }
 
     

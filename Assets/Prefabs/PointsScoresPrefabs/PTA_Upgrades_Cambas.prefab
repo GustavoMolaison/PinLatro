@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 838874367835780309}
   - component: {fileID: 7710270111179041580}
   - component: {fileID: 1301814742095874455}
+  - component: {fileID: 3543585716345984737}
   m_Layer: 5
   m_Name: AddedPointsUpgrades
   m_TagString: Untagged
@@ -189,7 +190,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
+  m_TextStyleHashCode: 97690656
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -346,6 +347,10 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2729396143569043227, guid: 327f1cc48d5eb294b9a17a08d46d611f, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: 97690656
+      objectReference: {fileID: 0}
     - target: {fileID: 8124597937377129819, guid: 327f1cc48d5eb294b9a17a08d46d611f, type: 3}
       propertyPath: m_Name
       value: AddedPointsUpgrades
@@ -353,5 +358,23 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8124597937377129819, guid: 327f1cc48d5eb294b9a17a08d46d611f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3543585716345984737}
   m_SourcePrefab: {fileID: 100100000, guid: 327f1cc48d5eb294b9a17a08d46d611f, type: 3}
+--- !u!114 &3543585716345984737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6360829733220164856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a8fa34d2a414a6468044750c615bf36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FloatingScore
+  moveSpeed: 1.2
+  fadeSpeed: 1
+  moveDirection: {x: 0.5, y: 1, z: 0}

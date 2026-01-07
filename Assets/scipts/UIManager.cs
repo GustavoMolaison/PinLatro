@@ -156,6 +156,7 @@ public class UIManager : MonoBehaviour
     {
         Vector2 BallCords = ball.transform.position;
         BallCords.y += 2f;
+        BallCords.x += 1.5f;
 
         GameObject newText = Instantiate(AddedPointsUpgradeText, BallCords, Quaternion.identity);
 
@@ -164,12 +165,11 @@ public class UIManager : MonoBehaviour
         if (tmp != null)
         {
             tmp.transform.position = BallCords;
-            Debug.Log("xdnull");
             tmp.SetText($"+{addedPoints}");
         }
 
         Destroy(newText, 1f);
-        Debug.Log("xd");
+        
     }
 }
 

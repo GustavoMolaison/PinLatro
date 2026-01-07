@@ -54,7 +54,7 @@ public class Portalball: MonoBehaviour
     public void Portal(Collision2D Coll, Ball ball_ref)
     {
 
-        if (TeleportsPlaced == false && Score_system.Instance.ball_out_of_pit)
+        if (TeleportsPlaced == false && ball_ref.ball_out_of_pit)
         {
 
 
