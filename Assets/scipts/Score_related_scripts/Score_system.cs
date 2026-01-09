@@ -92,6 +92,8 @@ public class Score_system : MonoBehaviour
             foreach (var ball in Game_manager.Instance.allBalls)
             {
                 ball.ball_out_of_pit = false;
+               
+                
             }
 
             currentscore = 0;
@@ -144,7 +146,7 @@ public class Score_system : MonoBehaviour
         UIManager.Instance.ScoreUpdateDisplay();
 
         
-         OnScoreChanged.Invoke();
+         OnScoreChanged?.Invoke();
         
 
         if (currentscore >= goalscore && stagepassed == false) 
@@ -171,7 +173,7 @@ public class Score_system : MonoBehaviour
             UIManager.Instance.ScoreUpdateDisplay();
 
 
-            OnScoreChanged.Invoke();
+            OnScoreChanged?.Invoke();
 
 
             if (currentscore >= goalscore && stagepassed == false)

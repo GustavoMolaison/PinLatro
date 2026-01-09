@@ -19,7 +19,7 @@ public class saver_right : MonoBehaviour
     {
         motorRef = hg.motor;
 
-        if (Input.GetKey(KeyCode.X))
+        if (Input.GetKey(KeyCode.X) & Game_manager.Instance.inTable == true)
         {
            
             motorRef.motorSpeed = power;

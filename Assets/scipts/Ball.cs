@@ -46,9 +46,20 @@ public class Ball : MonoBehaviour
         //Debug.Log(Rb.mass);
     }
 
+    public void ResetUpgrades()
+    {
+        Debug.Log("papa");
+        NoMoreColliding = null;
+        WhileColliding = null;
+        OnHitEventNoParam = null;
+        OnHitEvent = null;
+        ball_mechanics = null;
+
+    }
     public void AddMechanic(Action mechanic)
         {
           ball_mechanics += mechanic;
+
         }
     public void ModifyBall(float? Mass = null,
                     float? LinearDamping = null,

@@ -42,13 +42,16 @@ public class CameraMover : MonoBehaviour
     // Podepnij to pod przycisk "Sklep"
     public void GoToShop()
     {
-        Debug.Log("SKLEEEEP");
+        Game_manager.Instance.inShop = true;
+        Game_manager.Instance.inTable = false;
         targetPosition = shopPosition.position;
     }
 
     // Podepnij to pod przycisk "Powrót"
     public void GoToGame()
     {
+        Game_manager.Instance.inShop = false;
+        Game_manager.Instance.inTable = true;
         targetPosition = gamePosition.position;
     }
 }

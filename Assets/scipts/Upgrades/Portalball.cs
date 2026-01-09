@@ -46,6 +46,7 @@ public class Portalball: MonoBehaviour
 
     public void AddPortal(Ball ball_ref)
     {
+        Debug.Log("DodajeszPORTAL??!");
         ball_ref.OnHitEvent += Portal;
         Ball_ref = ball_ref;
     }

@@ -25,7 +25,7 @@ public class Hopper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) & Game_manager.Instance.inTable == true)
         {
             
             spring.frequency = minspringpower;

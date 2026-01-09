@@ -563,14 +563,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Upgrade_system, Assembly-CSharp
-        m_MethodName: UpgradeButton1
-        m_Mode: 1
+      - m_Target: {fileID: 8520319899138792426}
+        m_TargetAssemblyTypeName: MainShop, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -895,6 +895,7 @@ MonoBehaviour:
   uButton4: {fileID: 0}
   uButton5: {fileID: 0}
   uButton6: {fileID: 0}
+  leaveShopButton: {fileID: 0}
 --- !u!1 &5308539502973092131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,14 +1017,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Upgrade_system, Assembly-CSharp
-        m_MethodName: UpgradeButton2
-        m_Mode: 1
+      - m_Target: {fileID: 8520319899138792426}
+        m_TargetAssemblyTypeName: MainShop, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1149,14 +1150,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Upgrade_system, Assembly-CSharp
-        m_MethodName: UpgradeButton1
-        m_Mode: 1
+      - m_Target: {fileID: 8520319899138792426}
+        m_TargetAssemblyTypeName: MainShop, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1418,14 +1419,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Upgrade_system, Assembly-CSharp
-        m_MethodName: UpgradeButton1
-        m_Mode: 1
+      - m_Target: {fileID: 8520319899138792426}
+        m_TargetAssemblyTypeName: MainShop, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1687,14 +1688,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Upgrade_system, Assembly-CSharp
-        m_MethodName: UpgradeButton3
-        m_Mode: 1
+      - m_Target: {fileID: 8520319899138792426}
+        m_TargetAssemblyTypeName: MainShop, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2228,14 +2229,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Upgrade_system, Assembly-CSharp
-        m_MethodName: UpgradeButton1
-        m_Mode: 1
+      - m_Target: {fileID: 8520319899138792426}
+        m_TargetAssemblyTypeName: MainShop, Assembly-CSharp
+        m_MethodName: UpgradeButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

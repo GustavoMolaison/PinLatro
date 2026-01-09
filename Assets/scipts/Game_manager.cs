@@ -14,6 +14,11 @@ public class Game_manager : MonoBehaviour
     public event Action UpgradesRoundEnd;
     public static Game_manager Instance { get; private set; }
 
+    public bool inShop = false;
+    public bool inTable = true;
+
+
+
 
     void Awake()
     {
@@ -30,14 +35,14 @@ public class Game_manager : MonoBehaviour
     }
     private void Start()
     {
-// Update when player goes into next stage
-        UpgradesRoundEnd += Upgrade_system.Instance.ResetBase;
+        
+       
 
-// One time events when player hits goal
+        // One time events when player hits goal
         Score_system.Instance.onGoalAchiev += GoalCleared;
 
-// Events when player hits upgrading score demand
-        Upgrade_system.Instance.on_upgrade_cap_hit += Up_cap_achiev_manager;
+
+        
 // Events when timer hits 0:00
         Timer.Instance.OnTimerEnd += ResetSystem;
         
@@ -46,11 +51,11 @@ public class Game_manager : MonoBehaviour
     void OnDestroy()
     {
 
-        Score_system.Instance.OnTimerEnd -= Upgrade_system.Instance.ResetBase;
+        
 
         Score_system.Instance.onGoalAchiev -= GoalCleared;
 
-        Upgrade_system.Instance.on_upgrade_cap_hit -= Up_cap_achiev_manager;
+        
 
         Timer.Instance.OnTimerEnd -= ResetSystem;
     }
@@ -96,7 +101,7 @@ public class Game_manager : MonoBehaviour
         if (Score_system.Instance.stagepassed == true)
         {
             Debug.Log("stagepassed true");
-            CameraMover.Instance.GoToShop();
+            MainShop.Instance.OpenShop();
             Score_system.Instance.reset();
             UpgradesRoundEnd.Invoke();
             Score_system.Instance.stagepassed = false;
@@ -114,7 +119,7 @@ public class Game_manager : MonoBehaviour
         //Debug.Log(Score_system_ref.goalcleared);
         if (Score_system.Instance.stagepassed == false)
         {
-            
+            allBalls[0].ResetUpgrades();
             UIManager.Instance.ShowCanvasGameOver();
         }
         Timer.Instance.StopTimer();
@@ -146,14 +151,7 @@ public class Game_manager : MonoBehaviour
     }
 
 
-    public void Up_cap_achiev_manager()
-    {
-
-        UIManager.Instance.ShowCanvasUpgrade();
-        Upgrade_system.Instance.upgrade_cap += Upgrade_system.Instance.UpgradeCapDiff;
-        UIManager.Instance.UpdateUpgradeScoreDisplay();
-        Time.timeScale = 0f;
-    }
+    
 
     public void OnGoalCleared()
     {
@@ -161,5 +159,5 @@ public class Game_manager : MonoBehaviour
     }
 
 
-             
+    
 }

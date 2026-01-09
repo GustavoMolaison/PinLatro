@@ -146,12 +146,7 @@ public class UIManager : MonoBehaviour
         StageText.SetText("Stage: {0}", Score_system.Instance.stage);
     }
 
-    public void UpdateUpgradeScoreDisplay()
-    {
-        //Upgrade_score_info.text = "Next Upgrade:" + upgrade_cap.ToString();
-        Upgrade_score_info.SetText("Next Upgrade: {0}", Upgrade_system.Instance.upgrade_cap);
-    }
-
+    
     public void ShowAddedPointsUpgrades(int addedPoints, Ball ball)
     {
         Vector2 BallCords = ball.transform.position;

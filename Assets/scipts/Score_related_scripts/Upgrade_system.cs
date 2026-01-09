@@ -4,185 +4,131 @@ using System;
 using TMPro;
 using System.Runtime.InteropServices;
 using Unity.VisualScripting;
+using System.Linq;
 
-public enum upgrade_type
+
+// 1. Definicja typów ulepszeñ
+public enum UpgradeType
 {
-    A,
-    B,
-    C
+    Portal,
+    Sliding,
+    Racer
+}
+
+// 2. Klasa lub struktura reprezentuj¹ca pojedyncze ulepszenie.
+// [Serializable] pozwala edytowaæ listê w Inspektorze Unity, co jest du¿o wygodniejsze ni¿ kodowanie tego na sztywno.
+[Serializable]
+public class UpgradeDefinition
+{
+    public string Name;             // Dla czytelnoœci w debugowaniu
+    public UpgradeType Type;
+    public int Weight;              // Szansa na wylosowanie (wy¿sza liczba = czêœciej)
+
+    // U¿ywamy Action, tak jak chcia³eœ, ale lepiej by³oby to wydzieliæ do oddzielnych klas logiki.
+    // [HideInInspector] ukrywa to pole w Unity, bo delegatów nie da siê serializowaæ w edytorze.
+    public Action<Ball> Effect;
+
+    public UpgradeDefinition(UpgradeType type, int weight, Action<Ball> effect, string name = "Upgrade")
+    {
+        Type = type;
+        Weight = weight;
+        Effect = effect;
+        Name = name;
+    }
 }
 
 public class Upgrade_system : MonoBehaviour
 {
-    //public Ball Ball_ref;
-    private List<Ball> AllBalls;
-    public Score_system Score_system_ref;
-
-    public LayerMask wallsLayers;
-    // Definicja s³ownika: Kluczem jest string, wartoœci¹ jest funkcja (Action)
-    private Dictionary<upgrade_type, Action<Ball>> upgrades_listed;
-
-    [SerializeField] public CanvasGroup upgrade_canvas_group;
-    [SerializeField] private TMP_Text Upgrade_score_info;
-    [SerializeField] private TMP_Text upgrade_1_txt;
-    [SerializeField] private TMP_Text upgrade_2_txt;
-    [SerializeField] private TMP_Text upgrade_3_txt;
-
-    public float upgrade_cap_base = 100;
-    public float UpgradeCapModifier = 0.05f;
-    public float upgrade_cap_start { get; set; }
-    public float upgrade_cap;
-    public float UpgradeCapDiff = 100;
-    public float UpgradeDiffModifier = 0.02f;
-
-    public event Action on_upgrade_cap_hit;
-    
-
-    // UPGRADES VARIABLES ///////////
-    /////////////////////////////////
-    //       SLIDING      ///////////
-    public float sliding_bonus_f = 0;
-    public int sliding_bonus = 0;//
-    /// /////////////////////////////
-    //
-
-
+    // Singleton dla ³atwego dostêpu (skoro ju¿ u¿ywasz singletonów w swoim kodzie)
     public static Upgrade_system Instance { get; private set; }
-    
 
-
-    private void Awake()
+    void Awake()
     {
-
         // Jeœli instancja ju¿ istnieje (np. duplikat), niszczymy ten obiekt
         if (Instance != null && Instance != this)
         {
             Destroy(this);
         }
-
         else
         {
             Instance = this;
         }
 
-        
+        InitializeUpgrades();
+    }
 
-     }
-    void Start()
+
+        // Lista jest kluczowa - pozwala na indeksowanie i ³atwe losowanie.
+    [SerializeField] // Dziêki temu podejrzysz stan listy w edytorze (ale delegatów tam nie ustawisz)
+    private List<UpgradeDefinition> upgrades;
+
+    private int _totalWeight;
+
+   
+
+    // Tutaj konfigurujesz swoje ulepszenia.
+    // Krytyczna uwaga: Upewnij siê, ¿e Singletony (Portalball, Sliding) ju¿ istniej¹!
+    // W przeciwnym razie przenieœ to do Start().
+    private void InitializeUpgrades()
     {
-
-        AllBalls = Game_manager.Instance.allBalls;
-
-        upgrade_cap_start = upgrade_cap_base;
-        upgrade_cap = upgrade_cap_base;
-        UIManager.Instance.UpdateUpgradeScoreDisplay();
-        upgrade_1_txt.text = "A";
-        upgrade_2_txt.text = "B";
-        upgrade_3_txt.text = "C";
-        //upgrade_canvas_group = GetComponent<CanvasGroup>();
-
-        Score_system.Instance.OnScoreChanged += ScoreChangedUpgrades;
-        
-
-        upgrades_listed = new Dictionary<upgrade_type, Action<Ball>>
+        upgrades = new List<UpgradeDefinition>
         {
-                {upgrade_type.A, (value) => Portalball.Instance.AddPortal(value)},
-                {upgrade_type.B, (value) => Sliding.Instance.Add_Sliding(value)},
-                {upgrade_type.C, (value) => Racer.Instance.AddRacer(value)}
-                //{upgrade_type.B, () => Sliding.Instance.Upgrade_Sliding()}
+            // Przyk³ad: Portal jest rzadki (waga 10), Sliding czêsty (waga 50)
+            new UpgradeDefinition(UpgradeType.Portal, 10, ball => Portalball.Instance.AddPortal(ball), "Rare Portal"),
+            new UpgradeDefinition(UpgradeType.Sliding, 10, ball => Sliding.Instance.Add_Sliding(ball), "Common Sliding"),
+            new UpgradeDefinition(UpgradeType.Racer,   10, ball => Racer.Instance.AddRacer(ball),   "Uncommon Racer")
         };
 
+        // Obliczamy sumê wag raz, ¿eby nie robiæ tego przy ka¿dym losowaniu (optymalizacja)
+        CalculateWeights();
     }
 
-    void OnDestroy()
+    private void CalculateWeights()
     {
-        if (Score_system.Instance != null)
-            Score_system.Instance.OnScoreChanged -= ScoreChangedUpgrades;
-    }
-
-
-    public void ScoreChangedUpgrades()
-    {
-        if (Score_system_ref.currentscore >= upgrade_cap)
+        _totalWeight = 0;
+        foreach (var upgrade in upgrades)
         {
-            on_upgrade_cap_hit.Invoke();
+            _totalWeight += upgrade.Weight;
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Zwraca losowe ulepszenie z uwzglêdnieniem wag.
+    /// To jest standard bran¿owy dla systemów lootu/ulepszeñ.
+    /// </summary>
+    public UpgradeDefinition GetRandomUpgrade()
     {
-       
-    }
-    
-    public void ResetBase()
-    {
-        if (Score_system_ref.stagepassed)
+        if (upgrades == null || upgrades.Count == 0)
         {
-            //upgrade_cap = upgrade_cap_base;
-            upgrade_cap_start += upgrade_cap_start * UpgradeCapModifier; // Cap at the begging of stage
-            upgrade_cap = upgrade_cap_start; // Displayed Cap durning stage 
-            UpgradeCapDiff += UpgradeCapDiff * UpgradeDiffModifier; // Diff between next upgrades in stage
-            UIManager.Instance.UpdateUpgradeScoreDisplay();
+            Debug.LogError("Brak zdefiniowanych ulepszeñ!");
+            return null;
         }
+
+        // Algorytm losowania wa¿onego (Weighted Random Choice)
+        int randomValue = UnityEngine.Random.Range(0, _totalWeight);
+        int currentSum = 0;
+
+        foreach (var upgrade in upgrades)
+        {
+            currentSum += upgrade.Weight;
+            if (randomValue < currentSum)
+            {
+                return upgrade;
+            }
+        }
+
+        // Fallback (nie powinien wyst¹piæ, jeœli matematyka jest poprawna)
+        return upgrades[0];
     }
 
-    
-
-    //void Upgrade_Sliding()
-    //{
-        
-       
-
-        //Ball_ref.AddMechanic(()) =>
-    //    {
-    //        //Debug.Log("UPGRADE B DZIALA");
-    //        if (Ball_ref.Collider.IsTouchingLayers(wallsLayers) && Score_system_ref.ball_out_of_pit)
-    //        {
-    //            //Debug.Log("naliczamy bonus");
-    //            sliding_bonus_f += 2f * Time.deltaTime;
-    //            sliding_bonus = (int)sliding_bonus_f;
-    //        }
-    //        else
-    //        {
-    //            //Debug.Log("Dodajemy bonus");
-    //            Score_system_ref.Addpoint(sliding_bonus);
-    //            //Score_system_ref.currentscore += sliding_bonus;
-    //            sliding_bonus = 0;
-    //            sliding_bonus_f = 0;
-    //        }
-    //    });
-    //}
-    void Upgrade_A()
+    // Metoda pomocnicza, jeœli potrzebujesz "zwyk³ego" losowania bez wag
+    public UpgradeDefinition GetUniformRandomUpgrade()
     {
-        AllBalls[0].ModifyBall(Mass: 50f);
-        
-    }
-
-    public void UpgradeButton1()
-    {
-        upgrades_listed[upgrade_type.A](AllBalls[0]);
-        UIManager.Instance.HideCanvasGroup(upgrade_canvas_group);
-        Time.timeScale = 1f;
-        
-    }
-    public void UpgradeButton2()
-    {
-        upgrades_listed[upgrade_type.B](AllBalls[0]);
-        UIManager.Instance.HideCanvasGroup(upgrade_canvas_group);
-        Time.timeScale = 1f;
-        
-    }
-
-    public void UpgradeButton3()
-    {
-        upgrades_listed[upgrade_type.C](AllBalls[0]);
-        UIManager.Instance.HideCanvasGroup(upgrade_canvas_group);
-        Time.timeScale = 1f;
-        
+        if (upgrades.Count == 0) return null;
+        return upgrades[UnityEngine.Random.Range(0, upgrades.Count)];
     }
 
 
-  
+
 
 }
