@@ -40,6 +40,7 @@ public class Game_manager : MonoBehaviour
         Upgrade_system.Instance.on_upgrade_cap_hit += Up_cap_achiev_manager;
 // Events when timer hits 0:00
         Timer.Instance.OnTimerEnd += ResetSystem;
+        
     }
 
     void OnDestroy()
@@ -77,11 +78,14 @@ public class Game_manager : MonoBehaviour
     }
     public void ResetSystem()
     {
+        Debug.Log("Reset");
         allBalls[0].BallToSpawn();
 
         
         if (Score_system.Instance.stagepassed == false)
         {
+            
+            
             Debug.Log("stagepassed false");
             GameOver();
             Score_system.Instance.reset();
@@ -92,6 +96,7 @@ public class Game_manager : MonoBehaviour
         if (Score_system.Instance.stagepassed == true)
         {
             Debug.Log("stagepassed true");
+            CameraMover.Instance.GoToShop();
             Score_system.Instance.reset();
             UpgradesRoundEnd.Invoke();
             Score_system.Instance.stagepassed = false;
@@ -101,13 +106,15 @@ public class Game_manager : MonoBehaviour
         UIManager.Instance.HideCanvasSkipInfo();
     }
 
+    
+
     void GameOver()
     {
         //Debug.Log("No gameover nie");
         //Debug.Log(Score_system_ref.goalcleared);
         if (Score_system.Instance.stagepassed == false)
         {
-            Debug.Log("GAMEOVER");
+            
             UIManager.Instance.ShowCanvasGameOver();
         }
         Timer.Instance.StopTimer();
@@ -145,7 +152,6 @@ public class Game_manager : MonoBehaviour
         UIManager.Instance.ShowCanvasUpgrade();
         Upgrade_system.Instance.upgrade_cap += Upgrade_system.Instance.UpgradeCapDiff;
         UIManager.Instance.UpdateUpgradeScoreDisplay();
-        Debug.Log("Pauza?");
         Time.timeScale = 0f;
     }
 

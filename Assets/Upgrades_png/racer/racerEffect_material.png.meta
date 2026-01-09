@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e4317f17e760e21489931016c993dc97
+guid: 8d0c337ebac91f54aa1de8a88a095b8e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6698212348532857456
-    second: spark 1_0
+      213: 2777064358487478775
+    second: racerEffect_material_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spark 1_0
+      name: racerEffect_material_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 10272
-        height: 7645
+        width: 413
+        height: 211
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 095609f8b5b2b03a0800000000000000
-      internalID: -6698212348532857456
+      spriteID: 7f15b0e025d1a8620800000000000000
+      internalID: 2777064358487478775
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      spark 1_0: -6698212348532857456
+      racerEffect_material_0: 2777064358487478775
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -73,7 +73,7 @@ public class Ball : MonoBehaviour
         }
         if (other.CompareTag("TimerStart"))
         {
-            
+
             
             ball_out_of_pit = !ball_out_of_pit;
            

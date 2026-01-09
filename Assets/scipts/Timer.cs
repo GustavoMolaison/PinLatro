@@ -7,6 +7,8 @@ public class Timer : MonoBehaviour
 
     
 {
+
+    public bool isRunning { get; set; } = false;
     public static Timer Instance { get; private set; }
 
     public event Action OnTimerEnd;
@@ -34,7 +36,7 @@ public class Timer : MonoBehaviour
     void Update()
     {
 
-        if (Score_system.Instance.isRunning)
+        if (isRunning)
         {
             ClockFrameRun();
         }
@@ -45,6 +47,7 @@ public class Timer : MonoBehaviour
             {
                 if (ball.ball_out_of_pit)
                 {
+                    
                     StartTimer();
                     break; 
                 }
@@ -57,19 +60,19 @@ public class Timer : MonoBehaviour
     public void StartTimer()
     {
 
-        Score_system.Instance.isRunning = true;
+        isRunning = true;
     }
 
     public void EndTimer()
     {
-        //Debug.Log("xd czas xd");
+        Debug.Log("xd czas xdXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
         OnTimerEnd?.Invoke();
 
     }
 
     public void StopTimer()
     {
-        Score_system.Instance.isRunning = false;
+        isRunning = false;
         foreach (var ball in Game_manager.Instance.allBalls)
         {
             ball.ball_out_of_pit = false;
@@ -78,7 +81,7 @@ public class Timer : MonoBehaviour
 
     public void ClockFrameRun()
     {
-        if (Score_system.Instance.isRunning)
+        if (isRunning)
         {
             if (Score_system.Instance.timeRemaining > 0)
             {
@@ -93,7 +96,7 @@ public class Timer : MonoBehaviour
             else
             {
                 Score_system.Instance.timeRemaining = 0;
-                Score_system.Instance.isRunning = false;
+                isRunning = false;
                 EndTimer();
 
             }

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class Racer : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Racer : MonoBehaviour
 
     private float PointsToGive;
     private int PointsToGiveInt;
+
+    private ParticleSystem RacerParticles;
 
     [SerializeField] private float PointsMultiplier = 0.1f;
     public static Racer Instance { get; private set; }
@@ -29,9 +32,17 @@ public class Racer : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        RacerParticles = GetComponent<ParticleSystem>();
+        RacerParticles.Stop();
 
-        // Update is called once per frame
-        void Update()
+        this.gameObject.SetActive(false);
+
+    }
+
+    // Update is called once per frame
+    void Update()
        {
         if(BallUpgraded != null)
         {
@@ -52,6 +63,8 @@ public class Racer : MonoBehaviour
 
     public void AddRacer(Ball Ball_ref)
     {
+        this.gameObject.SetActive(true);
+        ParticlesOnOf(false);
         BallUpgraded = Ball_ref;
         //SparklesParticle.transform.localScale = Ball_ref.transform.localScale;
         //this.gameObject.SetActive(true);
@@ -62,12 +75,49 @@ public class Racer : MonoBehaviour
 
     public void UpgradeRacer()
     {
+
+        
+
         if (VelocitySave[1] > 10)
         {
             PointsToGive = VelocitySave[0] * PointsMultiplier;
             PointsToGiveInt = (int)PointsToGive;
         }
+
         Score_system.Instance.AddpointUpgrades(PointsToGiveInt, BallUpgraded);
-        Debug.Log("Dodano punkty Racer");
+
+        RacerParticles.transform.position = BallUpgraded.transform.position;
+
+        // Poprawka CS0618: u¿yj main.startSpeed zamiast przestarza³ego startSpeed
+        var mainModule = RacerParticles.main;
+        mainModule.startSpeed = VelocitySave[1];
+
+
+
+        if (VelocitySave[0] < 70)
+        {
+            Debug.Log((int)VelocitySave[1] / 7);
+            RacerParticles.Emit((int)VelocitySave[1] / 5);
+        }
+
+
+
+
+       
     }
+
+    private void ParticlesOnOf(bool active)
+    {
+        var emission = RacerParticles.emission;
+        emission.enabled = active;
+    }
+
+    //private IEnumerator DisableParticlesWithDelay(float delay)
+    //{
+
+    //    yield return new WaitForSeconds(delay);
+
+
+    //    ParticlesOnOf(false);
+    //}
 }

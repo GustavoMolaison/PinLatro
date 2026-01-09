@@ -26,7 +26,7 @@ public class LaunchPad : MonoBehaviour
         Vector2 reflection = Vector2.Reflect(coll.relativeVelocity, normal);
 
         rb.linearVelocity = (reflection + (normal * transform.up * launchForce)) * MulipierPower;
-        Debug.Log("Halo123");
+        
         //Vector2 reflectionVector = coll.relativeVelocity +  new Vector2(forceAdded, forceAdded);
         //Rigidbody2D ballRb = coll.collider.GetComponent<Rigidbody2D>();
         //ballRb.linearVelocity = reflectionVector;

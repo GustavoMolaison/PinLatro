@@ -31,7 +31,7 @@ public class Score_system : MonoBehaviour
      // booleans changed in other scripts
     public bool goalcleared { get; set; }
     
-    public bool isRunning { get; set; } = false;
+    
     public bool stagepassed { get; set; } = false;
 
 
@@ -58,7 +58,7 @@ public class Score_system : MonoBehaviour
     void Start()
     {
      goalcleared = false;
-     isRunning = false;
+     Timer.Instance.isRunning = false;
 
      timeRemaining = duration;
 
@@ -86,8 +86,8 @@ public class Score_system : MonoBehaviour
 
             goalcleared = false;
             //stagepassed = false;
-            
-            isRunning = false;
+
+            Timer.Instance.isRunning = false;
 
             foreach (var ball in Game_manager.Instance.allBalls)
             {
@@ -115,7 +115,7 @@ public class Score_system : MonoBehaviour
             goalcleared = false;
             //stagepassed = false;
 
-            isRunning = false;
+            Timer.Instance.isRunning = false;
 
             foreach (var ball in Game_manager.Instance.allBalls)
             {
@@ -140,7 +140,7 @@ public class Score_system : MonoBehaviour
     {
         currentscore += amount;
         alltimescore += amount;
-        Debug.Log("HITSCORE");
+       
         UIManager.Instance.ScoreUpdateDisplay();
 
         

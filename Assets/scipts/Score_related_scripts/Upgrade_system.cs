@@ -164,23 +164,22 @@ public class Upgrade_system : MonoBehaviour
         upgrades_listed[upgrade_type.A](AllBalls[0]);
         UIManager.Instance.HideCanvasGroup(upgrade_canvas_group);
         Time.timeScale = 1f;
-        Debug.Log("noklikam1");
+        
     }
     public void UpgradeButton2()
     {
         upgrades_listed[upgrade_type.B](AllBalls[0]);
         UIManager.Instance.HideCanvasGroup(upgrade_canvas_group);
         Time.timeScale = 1f;
-        Debug.Log("noklikam2");
+        
     }
 
     public void UpgradeButton3()
     {
         upgrades_listed[upgrade_type.C](AllBalls[0]);
-        Debug.Log("upgrade3");
         UIManager.Instance.HideCanvasGroup(upgrade_canvas_group);
         Time.timeScale = 1f;
-        Debug.Log("noklikam3");
+        
     }
 
 
