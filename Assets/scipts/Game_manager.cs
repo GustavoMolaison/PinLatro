@@ -7,11 +7,11 @@ public class Game_manager : MonoBehaviour
 {
 
 
-    //public Ball ball_ref;
+    //public Ball ballRef;
 
     public List<Ball> allBalls;
 
-    public event Action UpgradesRoundEnd;
+    public event Action upgradesRoundEnd;
     public static Game_manager Instance { get; private set; }
 
     public bool inShop = false;
@@ -44,7 +44,7 @@ public class Game_manager : MonoBehaviour
 
         
 // Events when timer hits 0:00
-        Timer.Instance.OnTimerEnd += ResetSystem;
+        Timer.Instance.onTimerEnd += ResetSystem;
         
     }
 
@@ -57,7 +57,7 @@ public class Game_manager : MonoBehaviour
 
         
 
-        Timer.Instance.OnTimerEnd -= ResetSystem;
+        Timer.Instance.onTimerEnd -= ResetSystem;
     }
 
 
@@ -94,7 +94,7 @@ public class Game_manager : MonoBehaviour
             Debug.Log("stagepassed false");
             GameOver();
             Score_system.Instance.reset();
-            UpgradesRoundEnd.Invoke();
+            upgradesRoundEnd.Invoke();
             Score_system.Instance.stagepassed = false;
         }
 
@@ -103,7 +103,7 @@ public class Game_manager : MonoBehaviour
             Debug.Log("stagepassed true");
             MainShop.Instance.OpenShop();
             Score_system.Instance.reset();
-            UpgradesRoundEnd.Invoke();
+            upgradesRoundEnd.Invoke();
             Score_system.Instance.stagepassed = false;
         }
 
@@ -115,8 +115,7 @@ public class Game_manager : MonoBehaviour
 
     void GameOver()
     {
-        //Debug.Log("No gameover nie");
-        //Debug.Log(Score_system_ref.goalcleared);
+        
         if (Score_system.Instance.stagepassed == false)
         {
             allBalls[0].ResetUpgrades();

@@ -11,7 +11,7 @@ public class Timer : MonoBehaviour
     public bool isRunning { get; set; } = false;
     public static Timer Instance { get; private set; }
 
-    public event Action OnTimerEnd;
+    public event Action onTimerEnd;
 
     private void Awake()
     {
@@ -47,7 +47,7 @@ public class Timer : MonoBehaviour
             {
                 if (ball.ball_out_of_pit)
                 {
-                    
+                    Debug.Log("Timer");
                     StartTimer();
                     break; 
                 }
@@ -66,7 +66,7 @@ public class Timer : MonoBehaviour
     public void EndTimer()
     {
         Debug.Log("xd czas xdXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
-        OnTimerEnd?.Invoke();
+        onTimerEnd?.Invoke();
 
     }
 

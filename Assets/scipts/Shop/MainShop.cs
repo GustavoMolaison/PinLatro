@@ -68,8 +68,8 @@ public class MainShop : MonoBehaviour
     {
         for (int i = 0; i < upgradeList.Count; i++)
         {
-            Debug.Log("INDEX");
-            Debug.Log(i);
+            //Debug.Log("INDEX");
+            //Debug.Log(i);
             upgradeList[i] = Upgrade_system.Instance.GetRandomUpgrade();
             txtList[i].text = upgradeList[i].Name;
         }

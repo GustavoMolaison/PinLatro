@@ -156,12 +156,16 @@ public class UIManager : MonoBehaviour
         GameObject newText = Instantiate(AddedPointsUpgradeText, BallCords, Quaternion.identity);
 
         var tmp = newText.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-        
+        Debug.Log("Kurwa co jest");
+
+
         if (tmp != null)
         {
+            Debug.Log("Kurwa co jest xddd");
             tmp.transform.position = BallCords;
             tmp.SetText($"+{addedPoints}");
         }
+
 
         Destroy(newText, 1f);
         

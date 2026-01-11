@@ -38,21 +38,21 @@ public class Sliding : MonoBehaviour
 
     }
 
-    public void Add_Sliding(Ball Ball_ref)
+    public void Add_Sliding(Ball ballRef)
     {
-        //SparklesParticle.transform.localScale = Ball_ref.transform.localScale;
+        //SparklesParticle.transform.localScale = ballRef.transform.localScale;
         this.gameObject.SetActive(true);
     
-        Ball_ref.WhileColliding += Upgrade_SlidingOn;
-        Ball_ref.NoMoreColliding += Upgrade_SlidingOff;
+        ballRef.WhileColliding += Upgrade_SlidingOn;
+        ballRef.NoMoreColliding += Upgrade_SlidingOff;
     }
 
 
 
-        public void Upgrade_SlidingOn(Collision2D Coll, Ball Ball_ref )
+        public void Upgrade_SlidingOn(Collision2D Coll, Ball ballRef )
         {
 
-        Rigidbody2D Ballrb = Ball_ref.GetComponent<Rigidbody2D>();
+        Rigidbody2D Ballrb = ballRef.GetComponent<Rigidbody2D>();
         ContactPoint2D contact = Coll.GetContact(0);
         
 
@@ -102,7 +102,7 @@ public class Sliding : MonoBehaviour
 
             }
 
-        public void Upgrade_SlidingOff(Collision2D Coll, Ball Ball_ref)
+        public void Upgrade_SlidingOff(Collision2D Coll, Ball ballRef)
         {
 
          if (SparklesParticle.emission.enabled == true)
@@ -110,7 +110,7 @@ public class Sliding : MonoBehaviour
             ParticlesOnOf(false);
            }
 
-          Score_system.Instance.AddpointUpgrades(sliding_bonus, Ball_ref);
+          Score_system.Instance.AddpointUpgrades(sliding_bonus, ballRef);
 
           sliding_bonus = 0;
           sliding_bonus_f = 0;

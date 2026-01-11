@@ -6,10 +6,10 @@ using System;
 public class Score_system : MonoBehaviour
 {
 
-    //public Ball ball_ref;
+    //public Ball ballRef;
     //public Game_manager Game_manager_ref;
 
-    public event Action OnTimerEnd;
+    public event Action onTimerEnd;
     public event Action onGoalAchiev;
     public event Action OnScoreChanged;
 
@@ -175,9 +175,11 @@ public class Score_system : MonoBehaviour
 
             OnScoreChanged?.Invoke();
 
+            Debug.Log("AddpointUpgrades");
 
             if (currentscore >= goalscore && stagepassed == false)
             {
+                Debug.Log("AddpointUpgrades if");
                 UIManager.Instance.ChangeGoalTextColor(Color.green);
 
                 goalcleared = true;
@@ -187,6 +189,7 @@ public class Score_system : MonoBehaviour
             }
             if( amount > 1f)
             {
+                Debug.Log("NAPIS");
                 UIManager.Instance.ShowAddedPointsUpgrades(amount, BallRef);
             }
             

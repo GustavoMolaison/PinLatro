@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Portalball: MonoBehaviour
 {
-    int TouchCount = 0;
-    public int TouchesPerPortal = 4; 
-    public Ball Ball_ref;
-    public bool TeleportingBlue { get; set; } = false;
-    public bool TeleportingOrange { get; set; } = false;
+    int touchCount = 0;
+    public int touchesPerPortal = 4; 
+    public Ball ballRef;
+    public bool teleportingBlue { get; set; } = false;
+    public bool teleportingOrange { get; set; } = false;
     public bool TeleportsPlaced { get; set; } = false;
 
     public GameObject BluePortal;
@@ -32,7 +32,7 @@ public class Portalball: MonoBehaviour
 
     private void Start()
     {
-        Game_manager.Instance.UpgradesRoundEnd += PortalBallOnRoundEnd;
+        Game_manager.Instance.upgradesRoundEnd += PortalBallOnRoundEnd;
         //Object<GetComponent> = 
     }
 
@@ -44,27 +44,27 @@ public class Portalball: MonoBehaviour
         
     }
 
-    public void AddPortal(Ball ball_ref)
+    public void AddPortal(Ball ballRef)
     {
         Debug.Log("DodajeszPORTAL??!");
-        ball_ref.OnHitEvent += Portal;
-        Ball_ref = ball_ref;
+        ballRef.OnHitEvent += Portal;
+        
     }
 
 
-    public void Portal(Collision2D Coll, Ball ball_ref)
+    public void Portal(Collision2D Coll, Ball ballRef)
     {
 
-        if (TeleportsPlaced == false && ball_ref.ball_out_of_pit)
+        if (TeleportsPlaced == false && ballRef.ball_out_of_pit)
         {
 
 
 
-            if (!TeleportingBlue && !TeleportingOrange)
+            if (!teleportingBlue && !teleportingOrange)
             {
-                TouchCount += 1;
+                touchCount += 1;
             }
-            if (TouchCount == 1)
+            if (touchCount == 1)
             {
                 if (BluePortal.activeSelf == false)
                 {
@@ -76,9 +76,9 @@ public class Portalball: MonoBehaviour
                 float angle = Mathf.Atan2(contact.normal.y, contact.normal.x) * Mathf.Rad2Deg;
                 BluePortal.transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
             }
-            //Debug.Log(TouchCount);
+            //Debug.Log(touchCount);
 
-            if (TouchCount == TouchesPerPortal)
+            if (touchCount == touchesPerPortal)
             {
 
                 if (OrangePortal.activeSelf == false)
@@ -91,7 +91,7 @@ public class Portalball: MonoBehaviour
                 float angle = Mathf.Atan2(contact.normal.y, contact.normal.x) * Mathf.Rad2Deg;
                 OrangePortal.transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
 
-                TouchCount = 0;
+                touchCount = 0;
                 TeleportsPlaced = true;
             }
         }

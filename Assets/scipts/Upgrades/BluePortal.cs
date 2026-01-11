@@ -3,7 +3,7 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     public GameObject OrangePortal;
-    public Portalball Portalball;
+    public Portalball portalball;
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Sprawdzamy czy to co wlecia³o to pi³ka (u¿yj Tagu albo sprawdzania komponentu)
@@ -21,28 +21,28 @@ public class Portal : MonoBehaviour
 
         if (other.CompareTag("Pinball"))
         {
-            Portalball.TeleportingBlue = false;
+            portalball.teleportingBlue = false;
         }
 
     }
 
     private void Teleport(GameObject go)
     {
-        if (OrangePortal.activeSelf == true && Portalball.TeleportingBlue == false)
+        if (OrangePortal.activeSelf == true && portalball.teleportingBlue == false)
         {
-            float speed = Portalball.Ball_ref.Rb.linearVelocity.magnitude;
+            float speed = portalball.ballRef.Rb.linearVelocity.magnitude;
             go.transform.position = OrangePortal.transform.position;
-            Portalball.TeleportingBlue = true;
-            Portalball.TeleportingOrange = true;
+            portalball.teleportingBlue = true;
+            portalball.teleportingOrange = true;
 
-            Portalball.Ball_ref.Rb.linearVelocity = OrangePortal.transform.up * speed;
+            portalball.ballRef.Rb.linearVelocity = OrangePortal.transform.up * speed;
         }
 
         else
         {
-            if (Portalball.TeleportingBlue == false)
+            if (portalball.teleportingBlue == false)
             {
-                Portalball.TeleportingBlue = true;
+                portalball.teleportingBlue = true;
             }
         }
 

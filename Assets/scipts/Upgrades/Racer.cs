@@ -61,15 +61,15 @@ public class Racer : MonoBehaviour
        }
 
 
-    public void AddRacer(Ball Ball_ref)
+    public void AddRacer(Ball ballRef)
     {
         this.gameObject.SetActive(true);
         ParticlesOnOf(false);
-        BallUpgraded = Ball_ref;
-        //SparklesParticle.transform.localScale = Ball_ref.transform.localScale;
+        BallUpgraded = ballRef;
+        //SparklesParticle.transform.localScale = ballRef.transform.localScale;
         //this.gameObject.SetActive(true);
 
-        Ball_ref.OnHitEventNoParam += UpgradeRacer;
+        ballRef.OnHitEventNoParam += UpgradeRacer;
     }
 
 
@@ -84,6 +84,7 @@ public class Racer : MonoBehaviour
             PointsToGiveInt = (int)PointsToGive;
         }
 
+        Debug.Log("UpgradeRacer");
         Score_system.Instance.AddpointUpgrades(PointsToGiveInt, BallUpgraded);
 
         RacerParticles.transform.position = BallUpgraded.transform.position;
@@ -96,7 +97,7 @@ public class Racer : MonoBehaviour
 
         if (VelocitySave[0] < 70)
         {
-            Debug.Log((int)VelocitySave[1] / 7);
+            //Debug.Log((int)VelocitySave[1] / 7);
             RacerParticles.Emit((int)VelocitySave[1] / 5);
         }
 
