@@ -10,14 +10,16 @@ TagManager:
   - TimerStart
   - GameOverCanvas
   - LaunchPad
+  - UpgradeName
+  - UpgradeCost
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Pinball
   - Water
   - UI
-  - 
+  - WaitingRoom
   - 
   - 
   - 

@@ -6,7 +6,8 @@ using UnityEngine;
 public class Portalball: MonoBehaviour
 {
     int touchCount = 0;
-    public int touchesPerPortal = 4; 
+    public int touchesPerPortal = 4;
+    [HideInInspector]
     public Ball ballRef;
     public bool teleportingBlue { get; set; } = false;
     public bool teleportingOrange { get; set; } = false;
@@ -44,10 +45,11 @@ public class Portalball: MonoBehaviour
         
     }
 
-    public void AddPortal(Ball ballRef)
+    public void AddPortal(Ball ballReff)
     {
         Debug.Log("DodajeszPORTAL??!");
-        ballRef.OnHitEvent += Portal;
+        ballRef = ballReff;
+        ballReff.OnHitEvent += Portal;
         
     }
 

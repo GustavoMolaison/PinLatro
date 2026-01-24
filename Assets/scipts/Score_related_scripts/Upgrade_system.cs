@@ -23,17 +23,18 @@ public class UpgradeDefinition
     public string Name;             // Dla czytelnoœci w debugowaniu
     public UpgradeType Type;
     public int Weight;              // Szansa na wylosowanie (wy¿sza liczba = czêœciej)
-
+    public int Cost;
     // U¿ywamy Action, tak jak chcia³eœ, ale lepiej by³oby to wydzieliæ do oddzielnych klas logiki.
     // [HideInInspector] ukrywa to pole w Unity, bo delegatów nie da siê serializowaæ w edytorze.
     public Action<Ball> Effect;
 
-    public UpgradeDefinition(UpgradeType type, int weight, Action<Ball> effect, string name = "Upgrade")
+    public UpgradeDefinition(UpgradeType type, int weight, Action<Ball> effect, int cost, string name = "Upgrade")
     {
         Type = type;
         Weight = weight;
         Effect = effect;
         Name = name;
+        Cost = cost;
     }
 }
 
@@ -74,9 +75,9 @@ public class Upgrade_system : MonoBehaviour
         upgrades = new List<UpgradeDefinition>
         {
             // Przyk³ad: Portal jest rzadki (waga 10), Sliding czêsty (waga 50)
-            new UpgradeDefinition(UpgradeType.Portal, 10, ball => Portalball.Instance.AddPortal(ball), "Rare Portal"),
-            new UpgradeDefinition(UpgradeType.Sliding, 10, ball => Sliding.Instance.Add_Sliding(ball), "Common Sliding"),
-            new UpgradeDefinition(UpgradeType.Racer,   10, ball => Racer.Instance.AddRacer(ball),   "Uncommon Racer")
+            new UpgradeDefinition(UpgradeType.Portal, 10, ball => Portalball.Instance.AddPortal(ball), 50, "Rare Portal"),
+            new UpgradeDefinition(UpgradeType.Sliding, 10, ball => Sliding.Instance.Add_Sliding(ball), 25, "Common Sliding"),
+            new UpgradeDefinition(UpgradeType.Racer,   10, ball => Racer.Instance.AddRacer(ball),      75,  "Uncommon Racer")
         };
 
         // Obliczamy sumê wag raz, ¿eby nie robiæ tego przy ka¿dym losowaniu (optymalizacja)

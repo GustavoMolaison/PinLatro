@@ -21,7 +21,7 @@ public class HitScore : MonoBehaviour
         if (collision.gameObject.CompareTag("Pinball"))
         {
             Score_system.Instance.Addpoint(points_to_give);
-
+            MoneySystem.Instance.addMoney(points_to_give / 2);
         }
     }
 }

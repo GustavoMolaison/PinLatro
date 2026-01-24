@@ -1,21 +1,22 @@
-using System.Runtime.CompilerServices;
 using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
-using System.Collections.Generic;
 
 
-public class Ball : MonoBehaviour
+public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
 {
 
 
 
     [Header("Settings")]
     [Tooltip("RespawnPoint")]
-    public Transform targetDestination;
+    
 
-    [Tooltip("Respawn line trigger")]
+   
 
     public CircleCollider2D Collider { get; set; }
     public Rigidbody2D Rb;
@@ -26,8 +27,12 @@ public class Ball : MonoBehaviour
     public event Action<Collision2D, Ball> WhileColliding;
     public event Action<Collision2D, Ball> NoMoreColliding;
 
+    public GameObject whenPickedBloom;
 
     public bool ball_out_of_pit = false;
+    public bool InLaunchPad;
+    public bool isBlooming = false;
+    public bool isPressed;
     public static Ball Instance { get; private set; }
 
     void Start()
@@ -37,18 +42,46 @@ public class Ball : MonoBehaviour
 
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        whenPickedBloom.SetActive(!whenPickedBloom.activeSelf);
+        isBlooming = !isBlooming;
+        PinBallsManager.Instance.oneBallPicked(this);
+        
 
-    // Update is called once per frame
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        isPressed = true;
+      
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        isPressed = false;
+        
+    }
+
+    
     void Update()
     {
         ball_mechanics?.Invoke();
+        //Debug.Log(isPressed);
 
-        //Debug.Log(Rb.mass);
+        if(isPressed && Game_manager.Instance.inShop)
+        {
+            Debug.Log("WCISKAM");
+           
+        }
+       
+
+       
     }
 
     public void ResetUpgrades()
     {
-        Debug.Log("papa");
+        
         NoMoreColliding = null;
         WhileColliding = null;
         OnHitEventNoParam = null;
@@ -80,16 +113,91 @@ public class Ball : MonoBehaviour
         
         if (other.CompareTag("RespawnLine"))
         {
-            BallToSpawn();
+            
+            BallToWaitingRoom();
         }
         if (other.CompareTag("TimerStart"))
         {
+           
+            ball_out_of_pit = !ball_out_of_pit;
+
+
+            InLaunchPad = !InLaunchPad;
+            if (InLaunchPad == true)
+            {
+                PinBallsManager.Instance.ballsInLaunchPad.Add(this);
+            }
+            else
+            {
+                PinBallsManager.Instance.ballsInLaunchPad.Remove(this);
+            }
+
+
 
             
-            ball_out_of_pit = !ball_out_of_pit;
+            
            
         }
     }
+
+    public void BallToSpawn()
+    {
+        transform.position = PinBallsManager.Instance.spawnBalls.position;
+        ball_out_of_pit = false;
+        InLaunchPad = true;
+
+       
+        
+        this.transform.localScale *= 1 / 3f;
+        
+
+        if (!PinBallsManager.Instance.ballsInLaunchPad.Contains(this))
+        {
+            PinBallsManager.Instance.ballsInLaunchPad.Add(this);
+        }
+
+
+       
+
+        if (PinBallsManager.Instance.ballsInQueue.Count > 0)
+        {
+            PinBallsManager.Instance.ballsInQueue.RemoveAt(0);
+        }
+    }
+
+    public void BallToWaitingRoom()
+    {
+        transform.position = PinBallsManager.Instance.waitingRoom.position;
+        ball_out_of_pit = false;
+        InLaunchPad = false;
+
+        
+        this.transform.localScale *= 3f;
+       
+        
+
+        if (PinBallsManager.Instance.ballsInLaunchPad.Contains(this))
+        {
+            PinBallsManager.Instance.ballsInLaunchPad.Remove(this);
+        }
+        if (!PinBallsManager.Instance.ballsInQueue.Contains(this))
+        {
+            PinBallsManager.Instance.ballsInQueue.Add(this);
+        }
+            
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void OnCollisionEnter2D(Collision2D collision) 
     {
@@ -107,10 +215,7 @@ public class Ball : MonoBehaviour
         NoMoreColliding?.Invoke(collision, this);
     }
 
-    public void BallToSpawn() {
-        transform.localPosition = new Vector2(0, 0);
-        ball_out_of_pit = false;
-    }
+    
 
 }
 

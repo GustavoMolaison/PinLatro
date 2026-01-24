@@ -66,8 +66,7 @@ public class Racer : MonoBehaviour
         this.gameObject.SetActive(true);
         ParticlesOnOf(false);
         BallUpgraded = ballRef;
-        //SparklesParticle.transform.localScale = ballRef.transform.localScale;
-        //this.gameObject.SetActive(true);
+     
 
         ballRef.OnHitEventNoParam += UpgradeRacer;
     }
@@ -84,7 +83,7 @@ public class Racer : MonoBehaviour
             PointsToGiveInt = (int)PointsToGive;
         }
 
-        Debug.Log("UpgradeRacer");
+        
         Score_system.Instance.AddpointUpgrades(PointsToGiveInt, BallUpgraded);
 
         RacerParticles.transform.position = BallUpgraded.transform.position;

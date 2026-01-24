@@ -1,41 +1,35 @@
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
+using System.Xml;
 using NUnit.Framework;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class MainShop : MonoBehaviour
 {
-    
-    [SerializeField] private TMP_Text uButton1;
-    [SerializeField] private TMP_Text uButton2;
-    [SerializeField] private TMP_Text uButton3;
-    [SerializeField] private TMP_Text uButton4;
-    [SerializeField] private TMP_Text uButton5;
-    [SerializeField] private TMP_Text uButton6;
 
-    private UpgradeDefinition upgrade1;
-    private UpgradeDefinition upgrade2;
-    private UpgradeDefinition upgrade3;
-    private UpgradeDefinition upgrade4;
-    private UpgradeDefinition upgrade5;
-    private UpgradeDefinition upgrade6;
+
+
+    public int[] newSlotCost = new int[3];
 
     
 
-    private List<UpgradeDefinition> upgradeList;
-    private List<TMP_Text> txtList;
+   
+    private UpgradeDefinition[] upgradeArray;
+
+    [SerializeField] private List<ButtonHelper> upgradeButtonsList;
+
+    public NewSlotHelper NewSlotHelper;
 
     public GameObject ballPrefab;
+    
 
-    public GameObject newBallSpawn1;
-    public GameObject newBallSpawn2;
-    public GameObject newBallSpawn3;
-
-    private List<GameObject> spawnList;
-
+    public GameObject newBallSpawn;
+  
     [SerializeField] private TMP_Text leaveShopButton;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public static MainShop Instance { get; private set; }
 
@@ -51,42 +45,60 @@ public class MainShop : MonoBehaviour
             Instance = this;
         }
     }
+
     void Start()
     {
-        upgradeList = new List<UpgradeDefinition> { upgrade1, upgrade2, upgrade3, upgrade4, upgrade5, upgrade6 };
-        txtList = new List<TMP_Text> { uButton1, uButton2, uButton3, uButton4, uButton5, uButton6 };
-        spawnList = new List<GameObject> { newBallSpawn1, newBallSpawn2, newBallSpawn3 };
+        upgradeArray = new UpgradeDefinition[upgradeButtonsList.Count];
+        NewSlotHelper.costTmp.text = $"Cost: {newSlotCost[0]}";
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void DrawUpgrades()
     {
-        for (int i = 0; i < upgradeList.Count; i++)
+        
+        for (int i = 0; i < upgradeArray.Length; i++)
         {
-            //Debug.Log("INDEX");
-            //Debug.Log(i);
-            upgradeList[i] = Upgrade_system.Instance.GetRandomUpgrade();
-            txtList[i].text = upgradeList[i].Name;
+            
+            upgradeArray[i] = Upgrade_system.Instance.GetRandomUpgrade();
+            upgradeButtonsList[i].nameTmp.text = upgradeArray[i].Name;
+            upgradeButtonsList[i].costTmp.text = $"Cost: {upgradeArray[i].Cost}";
         }
     }
     public void UpgradeButton(int buttonIndex)
     {
+        
+        if (MoneySystem.Instance.currentMoney >= upgradeArray[buttonIndex - 1].Cost)
+        {
+            upgradeArray[buttonIndex - 1].Effect(PinBallsManager.Instance.ballToUpgrade);
+        }
+        else
+        {
+            upgradeButtonsList[buttonIndex - 1].tooPoor();
+        }
 
-        upgradeList[buttonIndex - 1].Effect(Game_manager.Instance.allBalls[0]);
 
     }
 
     public void NewBallSlotButton()
+        
     {
-        int currentBallNum = Game_manager.Instance.allBalls.Count;
-        GameObject newBall = Instantiate(ballPrefab, spawnList[currentBallNum - 1].transform.position, Quaternion.identity);
-        Ball ballScript = newBall.GetComponent<Ball>();
-        Game_manager.Instance.allBalls.Add(ballScript);
+        Debug.Log(newSlotCost[PinBallsManager.Instance.allBalls.Count - 1]);
+        if (PinBallsManager.Instance.allBalls.Count < 3 && MoneySystem.Instance.currentMoney >= newSlotCost[PinBallsManager.Instance.allBalls.Count - 1])
+        {
+
+
+            
+            GameObject newBallParent = Instantiate(ballPrefab, newBallSpawn.transform.position, Quaternion.identity);
+            Ball newBall = newBallParent.GetComponent<Ball>();
+            newBall.BallToWaitingRoom();
+            PinBallsManager.Instance.allBalls.Add(newBall);
+
+            NewSlotHelper.costTmp.text = $"Cost: {newSlotCost[PinBallsManager.Instance.allBalls.Count - 1]}";
+        }
+        else
+        {
+            NewSlotHelper.tooPoor();
+        }
     }
 
     public void OpenShop()

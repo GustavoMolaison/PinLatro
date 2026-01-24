@@ -6,6 +6,8 @@ public class UIManager : MonoBehaviour
 {
 
     [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text moneyTextTable;
+    [SerializeField] private TMP_Text moneyTextShop;
     [SerializeField] private TMP_Text GoalText;
     [SerializeField] private TMP_Text time_text;
     [SerializeField] private TMP_Text StageText;
@@ -124,6 +126,15 @@ public class UIManager : MonoBehaviour
         scoreText.SetText("Score: {0}", Score_system.Instance.currentscore);
     }
 
+    public void MoneyUpdateDisplay()
+    {
+        //scoreText.text = "Score: " + Score_system.Instance.currentscore.ToString();
+        moneyTextTable.SetText("Cash: {0}", MoneySystem.Instance.currentMoney);
+        moneyTextShop.SetText("Cash: {0}", MoneySystem.Instance.currentMoney);
+    }
+
+    
+
 
     public void GoalUpdateDisplay()
     {
@@ -156,12 +167,12 @@ public class UIManager : MonoBehaviour
         GameObject newText = Instantiate(AddedPointsUpgradeText, BallCords, Quaternion.identity);
 
         var tmp = newText.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-        Debug.Log("Kurwa co jest");
+        
 
 
         if (tmp != null)
         {
-            Debug.Log("Kurwa co jest xddd");
+            
             tmp.transform.position = BallCords;
             tmp.SetText($"+{addedPoints}");
         }

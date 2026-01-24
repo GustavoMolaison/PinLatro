@@ -57,6 +57,7 @@ public class Score_system : MonoBehaviour
     // --- KONIEC SINGLETONA ---
     void Start()
     {
+     Addpoint(1);
      goalcleared = false;
      Timer.Instance.isRunning = false;
 
@@ -89,7 +90,7 @@ public class Score_system : MonoBehaviour
 
             Timer.Instance.isRunning = false;
 
-            foreach (var ball in Game_manager.Instance.allBalls)
+            foreach (var ball in PinBallsManager.Instance.allBalls)
             {
                 ball.ball_out_of_pit = false;
                
@@ -115,11 +116,12 @@ public class Score_system : MonoBehaviour
           
 
             goalcleared = false;
+            stagepassed = false;
             //stagepassed = false;
 
             Timer.Instance.isRunning = false;
 
-            foreach (var ball in Game_manager.Instance.allBalls)
+            foreach (var ball in PinBallsManager.Instance.allBalls)
             {
                 ball.ball_out_of_pit = false;
             }
@@ -175,11 +177,11 @@ public class Score_system : MonoBehaviour
 
             OnScoreChanged?.Invoke();
 
-            Debug.Log("AddpointUpgrades");
+            
 
             if (currentscore >= goalscore && stagepassed == false)
             {
-                Debug.Log("AddpointUpgrades if");
+                
                 UIManager.Instance.ChangeGoalTextColor(Color.green);
 
                 goalcleared = true;
@@ -189,7 +191,7 @@ public class Score_system : MonoBehaviour
             }
             if( amount > 1f)
             {
-                Debug.Log("NAPIS");
+                
                 UIManager.Instance.ShowAddedPointsUpgrades(amount, BallRef);
             }
             

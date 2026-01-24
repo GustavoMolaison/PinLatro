@@ -7,9 +7,9 @@ public class Game_manager : MonoBehaviour
 {
 
 
-    //public Ball ballRef;
+    
 
-    public List<Ball> allBalls;
+    
 
     public event Action upgradesRoundEnd;
     public static Game_manager Instance { get; private set; }
@@ -36,6 +36,14 @@ public class Game_manager : MonoBehaviour
     private void Start()
     {
         
+
+        if( Score_system.Instance.stage == 1)
+        {
+            GameObject newBallParent = Instantiate(MainShop.Instance.ballPrefab, MainShop.Instance.newBallSpawn.transform.position, Quaternion.identity);
+            Ball newBall = newBallParent.GetComponent<Ball>();
+            newBall.BallToWaitingRoom();
+            PinBallsManager.Instance.allBalls.Add(newBall);
+        }
        
 
         // One time events when player hits goal
@@ -66,13 +74,16 @@ public class Game_manager : MonoBehaviour
         //Debug.Log(allBalls[0].ball_out_of_pit);
         if (Input.GetKeyDown(KeyCode.R) && Score_system.Instance.stagepassed == true)
         {
-            //Debug.Log("RRR");
-            allBalls[0].BallToSpawn();
+           
+            
+                
             UIManager.Instance.HideCanvasSkip();
             ResetSystem();
 
 
         }
+
+        
 
         if (Score_system.Instance.goalcleared)
         {
@@ -83,24 +94,22 @@ public class Game_manager : MonoBehaviour
     }
     public void ResetSystem()
     {
-        Debug.Log("Reset");
-        allBalls[0].BallToSpawn();
+        
+        PinBallsManager.Instance.allBalsToWaitingRoom();
 
         
         if (Score_system.Instance.stagepassed == false)
         {
             
             
-            Debug.Log("stagepassed false");
+           
             GameOver();
-            Score_system.Instance.reset();
-            upgradesRoundEnd.Invoke();
-            Score_system.Instance.stagepassed = false;
+            
         }
 
         if (Score_system.Instance.stagepassed == true)
         {
-            Debug.Log("stagepassed true");
+            
             MainShop.Instance.OpenShop();
             Score_system.Instance.reset();
             upgradesRoundEnd.Invoke();
@@ -118,8 +127,11 @@ public class Game_manager : MonoBehaviour
         
         if (Score_system.Instance.stagepassed == false)
         {
-            allBalls[0].ResetUpgrades();
+            PinBallsManager.Instance.resetUpgradesAllBalls();
             UIManager.Instance.ShowCanvasGameOver();
+            Score_system.Instance.reset();
+            MoneySystem.Instance.resetMoney();
+            upgradesRoundEnd.Invoke();
         }
         Timer.Instance.StopTimer();
 

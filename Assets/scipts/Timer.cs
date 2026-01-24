@@ -43,11 +43,12 @@ public class Timer : MonoBehaviour
 
         else
         {
-            foreach (var ball in Game_manager.Instance.allBalls)
+            foreach (var ball in PinBallsManager.Instance.allBalls)
             {
+
                 if (ball.ball_out_of_pit)
                 {
-                    Debug.Log("Timer");
+                    
                     StartTimer();
                     break; 
                 }
@@ -65,7 +66,7 @@ public class Timer : MonoBehaviour
 
     public void EndTimer()
     {
-        Debug.Log("xd czas xdXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+        
         onTimerEnd?.Invoke();
 
     }
@@ -73,9 +74,9 @@ public class Timer : MonoBehaviour
     public void StopTimer()
     {
         isRunning = false;
-        foreach (var ball in Game_manager.Instance.allBalls)
+        foreach (var ball in PinBallsManager.Instance.allBalls)
         {
-            ball.ball_out_of_pit = false;
+            ball.GetComponent<Ball>().ball_out_of_pit = false;
         }
     }
 
