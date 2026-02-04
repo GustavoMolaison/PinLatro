@@ -161,6 +161,8 @@ public class Score_system : MonoBehaviour
             
         }
 
+        MoneySystem.Instance.addMoney(amount / 2);
+
     }
 
    public void AddpointUpgrades(int amount, Ball BallRef)
@@ -169,27 +171,9 @@ public class Score_system : MonoBehaviour
         if (BallRef.ball_out_of_pit)
         {
 
-            
-            currentscore += amount;
-            alltimescore += amount;
-            UIManager.Instance.ScoreUpdateDisplay();
 
-
-            OnScoreChanged?.Invoke();
-
-            
-
-            if (currentscore >= goalscore && stagepassed == false)
-            {
-                
-                UIManager.Instance.ChangeGoalTextColor(Color.green);
-
-                goalcleared = true;
-                stagepassed = true;
-
-
-            }
-            if( amount > 1f)
+            Addpoint(amount);
+            if ( amount > 1f)
             {
                 
                 UIManager.Instance.ShowAddedPointsUpgrades(amount, BallRef);

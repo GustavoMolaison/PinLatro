@@ -18,6 +18,7 @@ public class MoneySystem : MonoBehaviour
 
     public int currentMoney = 0;
     int allTimemMoney = 0;
+    int allTimeSpendedMoney = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,6 +35,15 @@ public class MoneySystem : MonoBehaviour
     {
         currentMoney += amount;
         allTimemMoney += amount;
+
+        UIManager.Instance.MoneyUpdateDisplay();
+
+    }
+
+    public void takeMoney(int amount)
+    {
+        currentMoney -= amount;
+        allTimeSpendedMoney += amount;
 
         UIManager.Instance.MoneyUpdateDisplay();
 

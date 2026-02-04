@@ -19,6 +19,8 @@ public class PinBallsManager : MonoBehaviour
     public List<Ball> ballsInLaunchPad = new List<Ball>();
 
     public Ball ballToUpgrade;
+
+    public bool oneBallBlooming;
     public static PinBallsManager Instance { get; private set; }
 
     void Awake()
@@ -48,10 +50,19 @@ public class PinBallsManager : MonoBehaviour
             {
                 if (ball.isBlooming)
                 {
+                    oneBallBlooming = true;
                     ballToUpgrade = ball;
+                    break;
+                }
+                else
+                {
+                    oneBallBlooming = false;
                 }
             }
-                
+
+            Debug.Log($"Is Blooming {oneBallBlooming}");
+            Debug.Log($"allBalls count {allBalls.Count}");
+
         }
         else
             {
@@ -78,7 +89,11 @@ public class PinBallsManager : MonoBehaviour
 
         foreach (var ballRef in allBalls)
         {
-            ballRef.BallToWaitingRoom();
+            if (!ballRef.inWaitingRoom)
+            {
+                ballRef.BallToWaitingRoom();
+            }
+          
         }
     }
 

@@ -3,8 +3,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-public class Portalball: MonoBehaviour
+
+public class Portalball: Upgrade
 {
+    public override string UpgradeName => "Portal Ball";
+
+
     int touchCount = 0;
     public int touchesPerPortal = 4;
     [HideInInspector]
@@ -17,25 +21,17 @@ public class Portalball: MonoBehaviour
     public GameObject OrangePortal;
     public static Portalball Instance { get; private set; }
 
-    private void Awake()
-    {
-        // Jeœli instancja ju¿ istnieje (np. duplikat), niszczymy ten obiekt
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
+    //private void Awake()
+    //{
+    //    Game_manager.Instance.upgradesRoundEnd += PortalBallOnRoundEnd;
+    //}
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    private void Start()
-    {
-        Game_manager.Instance.upgradesRoundEnd += PortalBallOnRoundEnd;
-        //Object<GetComponent> = 
-    }
+    //private void Start()
+    //{
+    //    Game_manager.Instance.upgradesRoundEnd += PortalBallOnRoundEnd;
+    //    //Object<GetComponent> = 
+    //}
 
     private void PortalBallOnRoundEnd()
     {
@@ -45,16 +41,19 @@ public class Portalball: MonoBehaviour
         
     }
 
-    public void AddPortal(Ball ballReff)
+    public override void apply(Ball ballReff)
     {
+        
         Debug.Log("DodajeszPORTAL??!");
         ballRef = ballReff;
-        ballReff.OnHitEvent += Portal;
-        
+        ballReff.OnHitEvent += OnEvent;
+
+        Game_manager.Instance.upgradesRoundEnd += PortalBallOnRoundEnd;
+
     }
 
 
-    public void Portal(Collision2D Coll, Ball ballRef)
+    public void OnEvent(Collision2D Coll, Ball ballRef)
     {
 
         if (TeleportsPlaced == false && ballRef.ball_out_of_pit)

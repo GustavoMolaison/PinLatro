@@ -2,8 +2,10 @@ using System;
 using UnityEngine;
 using System.Collections;
 
-public class Racer : MonoBehaviour
+public class Racer : Upgrade
 {
+    public override string UpgradeName => "Racer";
+
     private Ball BallUpgraded;
     private Rigidbody2D BallRb;
 
@@ -17,29 +19,24 @@ public class Racer : MonoBehaviour
     private ParticleSystem RacerParticles;
 
     [SerializeField] private float PointsMultiplier = 0.1f;
+
     public static Racer Instance { get; private set; }
-
     private void Awake()
-    {
-        // Jeœli instancja ju¿ istnieje (np. duplikat), niszczymy ten obiekt
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
-
-    private void Start()
     {
         RacerParticles = GetComponent<ParticleSystem>();
         RacerParticles.Stop();
 
         this.gameObject.SetActive(false);
-
     }
+
+    //private void Start()
+    //{
+    //    RacerParticles = GetComponent<ParticleSystem>();
+    //    RacerParticles.Stop();
+
+    //    this.gameObject.SetActive(false);
+
+    
 
     // Update is called once per frame
     void Update()
@@ -61,7 +58,7 @@ public class Racer : MonoBehaviour
        }
 
 
-    public void AddRacer(Ball ballRef)
+    public override void apply(Ball ballRef)
     {
         this.gameObject.SetActive(true);
         ParticlesOnOf(false);

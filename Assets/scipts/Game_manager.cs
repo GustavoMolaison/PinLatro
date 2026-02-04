@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class Game_manager : MonoBehaviour
 {
 
@@ -83,6 +84,12 @@ public class Game_manager : MonoBehaviour
 
         }
 
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            Scene activeScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(activeScene.buildIndex);
+        }
+
         
 
         if (Score_system.Instance.goalcleared)
@@ -94,25 +101,27 @@ public class Game_manager : MonoBehaviour
     }
     public void ResetSystem()
     {
-        
+       
+
         PinBallsManager.Instance.allBalsToWaitingRoom();
 
-        
+
         if (Score_system.Instance.stagepassed == false)
         {
-            
-            
-           
-            GameOver();
-            
+
+
+
+            Scene activeScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(activeScene.buildIndex);
+
         }
 
         if (Score_system.Instance.stagepassed == true)
         {
-            
+
             MainShop.Instance.OpenShop();
             Score_system.Instance.reset();
-            upgradesRoundEnd.Invoke();
+            upgradesRoundEnd?.Invoke();
             Score_system.Instance.stagepassed = false;
         }
 

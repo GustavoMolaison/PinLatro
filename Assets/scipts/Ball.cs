@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -31,8 +32,11 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
 
     public bool ball_out_of_pit = false;
     public bool InLaunchPad;
+    public bool inWaitingRoom;
     public bool isBlooming = false;
     public bool isPressed;
+
+    public List<UpgradeType> Upgrades;
     public static Ball Instance { get; private set; }
 
     void Start()
@@ -145,11 +149,16 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
         transform.position = PinBallsManager.Instance.spawnBalls.position;
         ball_out_of_pit = false;
         InLaunchPad = true;
+        inWaitingRoom = false;
 
-       
-        
+
+
         this.transform.localScale *= 1 / 3f;
         
+        if (this.transform.localScale.x != 0.5 || this.transform.localScale.y != 0.5)
+        {
+            this.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+        }
 
         if (!PinBallsManager.Instance.ballsInLaunchPad.Contains(this))
         {
@@ -170,8 +179,10 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
         transform.position = PinBallsManager.Instance.waitingRoom.position;
         ball_out_of_pit = false;
         InLaunchPad = false;
+        inWaitingRoom = true;
 
-        
+
+
         this.transform.localScale *= 3f;
        
         

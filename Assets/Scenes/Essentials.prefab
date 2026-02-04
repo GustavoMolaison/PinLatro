@@ -1,50 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &504848175767121094
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4282835710296775226}
-  - component: {fileID: 2033093793173873428}
-  m_Layer: 0
-  m_Name: Racer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4282835710296775226
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504848175767121094}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1504133277097433722}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2033093793173873428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504848175767121094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3848b8bdb5c1ad142a42125947ae0576, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Racer
-  PointsMultiplier: 0.1
 --- !u!1 &1674647434008249977
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,18 +321,12 @@ PrefabInstance:
       value: Game_manager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1238635473424557517, guid: acefcb7615aaa5b41b02ec74078e0960, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4282835710296775226}
+    m_RemovedGameObjects:
+    - {fileID: 7827582717511920314, guid: acefcb7615aaa5b41b02ec74078e0960, type: 3}
+    - {fileID: 9179607509205584373, guid: acefcb7615aaa5b41b02ec74078e0960, type: 3}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acefcb7615aaa5b41b02ec74078e0960, type: 3}
---- !u!4 &1504133277097433722 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1238635473424557517, guid: acefcb7615aaa5b41b02ec74078e0960, type: 3}
-  m_PrefabInstance: {fileID: 427636740519870391}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2998103258739038331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3203223026158233548, guid: acefcb7615aaa5b41b02ec74078e0960, type: 3}

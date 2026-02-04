@@ -5,6 +5,7 @@ using TMPro;
 using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 
 // 1. Definicja typów ulepszeñ
@@ -15,36 +16,69 @@ public enum UpgradeType
     Racer
 }
 
-// 2. Klasa lub struktura reprezentuj¹ca pojedyncze ulepszenie.
-// [Serializable] pozwala edytowaæ listê w Inspektorze Unity, co jest du¿o wygodniejsze ni¿ kodowanie tego na sztywno.
+//[Serializable]
+//public struct UpgradeMapping
+//{
+//    [SerializeField]  public GameObject prefab;
+//    [SerializeField]  public UpgradeType type;
+//    [SerializeField]  public int weight;
+//    [SerializeField]  public int cost;
+
+//}
+
+
+
+
 [Serializable]
-public class UpgradeDefinition
+public class UpgradeDefinition 
 {
-    public string Name;             // Dla czytelnoœci w debugowaniu
+    //[HideInInspector] public string Name;
+    
+    public GameObject Prefab;
     public UpgradeType Type;
+    public UpgradesSO upgradesSO;
     public int Weight;              // Szansa na wylosowanie (wy¿sza liczba = czêœciej)
     public int Cost;
-    // U¿ywamy Action, tak jak chcia³eœ, ale lepiej by³oby to wydzieliæ do oddzielnych klas logiki.
-    // [HideInInspector] ukrywa to pole w Unity, bo delegatów nie da siê serializowaæ w edytorze.
     public Action<Ball> Effect;
 
-    public UpgradeDefinition(UpgradeType type, int weight, Action<Ball> effect, int cost, string name = "Upgrade")
+    public string Name => Type.ToString();
+
+
+
+
+
+
+    public UpgradeDefinition(UpgradeType type, int weight, int cost)
     {
         Type = type;
         Weight = weight;
-        Effect = effect;
-        Name = name;
+        //Effect = (ballRef) => InitializeUpgrade(type, ballRef);
         Cost = cost;
+        
     }
+
+    
 }
+  
 
 public class Upgrade_system : MonoBehaviour
 {
-    // Singleton dla ³atwego dostêpu (skoro ju¿ u¿ywasz singletonów w swoim kodzie)
+    
+    public Dictionary<UpgradeType, GameObject> upgradesDict = new Dictionary<UpgradeType, GameObject>();
+
+
+   
+    
     public static Upgrade_system Instance { get; private set; }
 
+
+  
+    public List<UpgradeDefinition> upgrades;
+
+    private Upgrade upgradeScript;
     void Awake()
     {
+        
         // Jeœli instancja ju¿ istnieje (np. duplikat), niszczymy ten obiekt
         if (Instance != null && Instance != this)
         {
@@ -55,34 +89,48 @@ public class Upgrade_system : MonoBehaviour
             Instance = this;
         }
 
-        InitializeUpgrades();
+         
+        foreach (var upgrade in upgrades)
+        {
+
+            upgradesDict.Add(upgrade.Type, upgrade.Prefab);
+
+
+            UpgradeType currentType = upgrade.Type;
+            upgrade.Effect = (ballRef) => InitializeUpgrade(currentType, ballRef);
+          
+        }
+
+        CalculateWeights();
+     
     }
 
 
-        // Lista jest kluczowa - pozwala na indeksowanie i ³atwe losowanie.
-    [SerializeField] // Dziêki temu podejrzysz stan listy w edytorze (ale delegatów tam nie ustawisz)
-    private List<UpgradeDefinition> upgrades;
+
+    public void InitializeUpgrade(UpgradeType upgradeName, Ball ballRef)
+    {
+        if (!upgradesDict.ContainsKey(upgradeName))
+        {
+            Debug.LogError($"Brak prefaba dla {upgradeName} w s³owniku!");
+            return;
+        }
+        if (!ballRef.Upgrades.Contains(upgradeName))
+        {
+            ballRef.Upgrades.Add(upgradeName);
+            GameObject newUpgrade = Instantiate(upgradesDict[upgradeName], ballRef.transform);
+            upgradeScript = newUpgrade.GetComponent<Upgrade>();
+            upgradeScript.apply(ballRef);
+        }
+
+        
+    }
+
 
     private int _totalWeight;
 
    
 
-    // Tutaj konfigurujesz swoje ulepszenia.
-    // Krytyczna uwaga: Upewnij siê, ¿e Singletony (Portalball, Sliding) ju¿ istniej¹!
-    // W przeciwnym razie przenieœ to do Start().
-    private void InitializeUpgrades()
-    {
-        upgrades = new List<UpgradeDefinition>
-        {
-            // Przyk³ad: Portal jest rzadki (waga 10), Sliding czêsty (waga 50)
-            new UpgradeDefinition(UpgradeType.Portal, 10, ball => Portalball.Instance.AddPortal(ball), 50, "Rare Portal"),
-            new UpgradeDefinition(UpgradeType.Sliding, 10, ball => Sliding.Instance.Add_Sliding(ball), 25, "Common Sliding"),
-            new UpgradeDefinition(UpgradeType.Racer,   10, ball => Racer.Instance.AddRacer(ball),      75,  "Uncommon Racer")
-        };
-
-        // Obliczamy sumê wag raz, ¿eby nie robiæ tego przy ka¿dym losowaniu (optymalizacja)
-        CalculateWeights();
-    }
+   
 
     private void CalculateWeights()
     {
@@ -99,6 +147,7 @@ public class Upgrade_system : MonoBehaviour
     /// </summary>
     public UpgradeDefinition GetRandomUpgrade()
     {
+       
         if (upgrades == null || upgrades.Count == 0)
         {
             Debug.LogError("Brak zdefiniowanych ulepszeñ!");
@@ -109,6 +158,7 @@ public class Upgrade_system : MonoBehaviour
         int randomValue = UnityEngine.Random.Range(0, _totalWeight);
         int currentSum = 0;
 
+
         foreach (var upgrade in upgrades)
         {
             currentSum += upgrade.Weight;
@@ -118,8 +168,8 @@ public class Upgrade_system : MonoBehaviour
             }
         }
 
-        // Fallback (nie powinien wyst¹piæ, jeœli matematyka jest poprawna)
-        return upgrades[0];
+        // Fallback (nie powinien wyst¹piæ, jeœli matematyka jest poprawna
+        return null;
     }
 
     // Metoda pomocnicza, jeœli potrzebujesz "zwyk³ego" losowania bez wag

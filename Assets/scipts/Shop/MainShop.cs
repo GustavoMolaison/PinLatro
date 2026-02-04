@@ -60,16 +60,28 @@ public class MainShop : MonoBehaviour
         {
             
             upgradeArray[i] = Upgrade_system.Instance.GetRandomUpgrade();
+
+            if (upgradeButtonsList == null) Debug.LogError("Lista przycisków to NULL!");
+            else if (upgradeButtonsList[i] == null) Debug.LogError($"Przycisk pod indeksem {i} to NULL!");
+            else if (upgradeButtonsList[i].nameTmp == null) Debug.LogError($"Komponent Text (nameTmp) w przycisku {i} nie jest przypisany!");
+
+            if (upgradeArray == null) Debug.LogError("Tablica ulepszeñ to NULL!");
+            else if (upgradeArray[i] == null) Debug.LogError($"Ulepszenie pod indeksem {i} to NULL!");
+
             upgradeButtonsList[i].nameTmp.text = upgradeArray[i].Name;
             upgradeButtonsList[i].costTmp.text = $"Cost: {upgradeArray[i].Cost}";
         }
     }
     public void UpgradeButton(int buttonIndex)
     {
-        
-        if (MoneySystem.Instance.currentMoney >= upgradeArray[buttonIndex - 1].Cost)
+
+        if (MoneySystem.Instance.currentMoney >= upgradeArray[buttonIndex - 1].Cost && PinBallsManager.Instance.oneBallBlooming)
         {
-            upgradeArray[buttonIndex - 1].Effect(PinBallsManager.Instance.ballToUpgrade);
+            if (!PinBallsManager.Instance.ballToUpgrade.Upgrades.Contains(upgradeArray[buttonIndex - 1].Type))
+            {
+                MoneySystem.Instance.takeMoney(upgradeArray[buttonIndex - 1].Cost);
+                upgradeArray[buttonIndex - 1].Effect(PinBallsManager.Instance.ballToUpgrade);
+            }
         }
         else
         {
@@ -82,16 +94,17 @@ public class MainShop : MonoBehaviour
     public void NewBallSlotButton()
         
     {
-        Debug.Log(newSlotCost[PinBallsManager.Instance.allBalls.Count - 1]);
+        
         if (PinBallsManager.Instance.allBalls.Count < 3 && MoneySystem.Instance.currentMoney >= newSlotCost[PinBallsManager.Instance.allBalls.Count - 1])
         {
 
+            MoneySystem.Instance.takeMoney(newSlotCost[PinBallsManager.Instance.allBalls.Count - 1]);
 
-            
             GameObject newBallParent = Instantiate(ballPrefab, newBallSpawn.transform.position, Quaternion.identity);
             Ball newBall = newBallParent.GetComponent<Ball>();
-            newBall.BallToWaitingRoom();
+            
             PinBallsManager.Instance.allBalls.Add(newBall);
+            newBall.BallToWaitingRoom();
 
             NewSlotHelper.costTmp.text = $"Cost: {newSlotCost[PinBallsManager.Instance.allBalls.Count - 1]}";
         }

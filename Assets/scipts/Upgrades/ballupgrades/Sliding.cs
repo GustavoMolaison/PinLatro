@@ -2,9 +2,10 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Sliding : MonoBehaviour
+public class Sliding : Upgrade
 {
-    
+    public override string UpgradeName => "Sliding";
+
     public LayerMask wallsLayers;
    
     public float PointsPerDeltaTime = 2;
@@ -14,31 +15,26 @@ public class Sliding : MonoBehaviour
 
 
     private ParticleSystem SparklesParticle;
+
     public static Sliding Instance { get; private set; }
-
     private void Awake()
-    {
-        // Jeœli instancja ju¿ istnieje (np. duplikat), niszczymy ten obiekt
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
-
-    private void Start()
     {
         SparklesParticle = GetComponent<ParticleSystem>();
         SparklesParticle.Stop();
-        
-        this.gameObject.SetActive(false);
 
+        this.gameObject.SetActive(false);
     }
 
-    public void Add_Sliding(Ball ballRef)
+    //private void Start()
+    //{
+    //    SparklesParticle = GetComponent<ParticleSystem>();
+    //    SparklesParticle.Stop();
+        
+    //    this.gameObject.SetActive(false);
+
+    //}
+
+    public override void apply(Ball ballRef)
     {
         //SparklesParticle.transform.localScale = ballRef.transform.localScale;
         this.gameObject.SetActive(true);
