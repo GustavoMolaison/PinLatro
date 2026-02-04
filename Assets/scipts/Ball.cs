@@ -36,7 +36,7 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
     public bool isBlooming = false;
     public bool isPressed;
 
-    public List<UpgradeType> Upgrades;
+    public List<UpgradesSO> Upgrades;
     public static Ball Instance { get; private set; }
 
     void Start()

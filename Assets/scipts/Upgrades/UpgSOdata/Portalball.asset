@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae24d948a3d413e4e9251f6230143777, type: 3}
   m_Name: Portalball
   m_EditorClassIdentifier: Assembly-CSharp::UpgradesSO
+  prefab: {fileID: 4784893581171081413, guid: 877ff766ee9222d4f801fa5a27e5c8dd, type: 3}
+  type: 0
+  weight: 20
+  cost: 80
+  _displayName: Portal Ball

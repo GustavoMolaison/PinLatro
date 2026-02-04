@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class Portalball: Upgrade
 {
-    public override string UpgradeName => "Portal Ball";
 
+    public override string UpgradeName => "Portal Ball";
 
     int touchCount = 0;
     public int touchesPerPortal = 4;
@@ -21,17 +21,7 @@ public class Portalball: Upgrade
     public GameObject OrangePortal;
     public static Portalball Instance { get; private set; }
 
-    //private void Awake()
-    //{
-    //    Game_manager.Instance.upgradesRoundEnd += PortalBallOnRoundEnd;
-    //}
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    //private void Start()
-    //{
-    //    Game_manager.Instance.upgradesRoundEnd += PortalBallOnRoundEnd;
-    //    //Object<GetComponent> = 
-    //}
+ 
 
     private void PortalBallOnRoundEnd()
     {

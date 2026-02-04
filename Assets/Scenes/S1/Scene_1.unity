@@ -4200,6 +4200,18 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5011846203708141999, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
+      propertyPath: 'upgrades.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e98875d21c69e14f8c69600e1cc0577, type: 2}
+    - target: {fileID: 5011846203708141999, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
+      propertyPath: 'upgrades.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 29f1e9ecaebf42547828d992e961783d, type: 2}
+    - target: {fileID: 5011846203708141999, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
+      propertyPath: 'upgrades.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 7178578e11748ef47a9addc84bccc827, type: 2}
+    - target: {fileID: 5011846203708141999, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
       propertyPath: upgradeMappings.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -4264,6 +4276,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5011846203708141999, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
+      propertyPath: allAvailableUpgrades.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011846203708141999, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
       propertyPath: upgrades.Array.data[0].upgradesSO
       value: 
       objectReference: {fileID: 11400000, guid: 7178578e11748ef47a9addc84bccc827, type: 2}
@@ -4275,6 +4291,18 @@ PrefabInstance:
       propertyPath: upgrades.Array.data[2].upgradesSO
       value: 
       objectReference: {fileID: 11400000, guid: 29f1e9ecaebf42547828d992e961783d, type: 2}
+    - target: {fileID: 5011846203708141999, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
+      propertyPath: 'allAvailableUpgrades.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e98875d21c69e14f8c69600e1cc0577, type: 2}
+    - target: {fileID: 5011846203708141999, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
+      propertyPath: 'allAvailableUpgrades.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 29f1e9ecaebf42547828d992e961783d, type: 2}
+    - target: {fileID: 5011846203708141999, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
+      propertyPath: 'allAvailableUpgrades.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 7178578e11748ef47a9addc84bccc827, type: 2}
     - target: {fileID: 5011846203708141999, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
       propertyPath: upgradeMappings.Array.data[0].cost
       value: 50

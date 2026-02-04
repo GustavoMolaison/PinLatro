@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae24d948a3d413e4e9251f6230143777, type: 3}
   m_Name: Sliding
   m_EditorClassIdentifier: Assembly-CSharp::UpgradesSO
+  prefab: {fileID: 7760070793249404577, guid: 8531d25c6cb2a424a9157ed5c4c120b5, type: 3}
+  type: 1
+  weight: 60
+  cost: 30
+  _displayName: Sliding

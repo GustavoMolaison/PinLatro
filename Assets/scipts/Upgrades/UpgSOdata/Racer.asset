@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae24d948a3d413e4e9251f6230143777, type: 3}
   m_Name: Racer
   m_EditorClassIdentifier: Assembly-CSharp::UpgradesSO
+  prefab: {fileID: 2180598481972371402, guid: 09a3a01289082cd4eb7ad9fda26387d7, type: 3}
+  type: 2
+  weight: 40
+  cost: 60
+  _displayName: Racer

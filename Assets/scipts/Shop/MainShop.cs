@@ -18,7 +18,7 @@ public class MainShop : MonoBehaviour
     
 
    
-    private UpgradeDefinition[] upgradeArray;
+    private UpgradesSO[] upgradeArray;
 
     [SerializeField] private List<ButtonHelper> upgradeButtonsList;
 
@@ -48,7 +48,7 @@ public class MainShop : MonoBehaviour
 
     void Start()
     {
-        upgradeArray = new UpgradeDefinition[upgradeButtonsList.Count];
+        upgradeArray = new UpgradesSO[upgradeButtonsList.Count];
         NewSlotHelper.costTmp.text = $"Cost: {newSlotCost[0]}";
     }
 
@@ -60,6 +60,7 @@ public class MainShop : MonoBehaviour
         {
             
             upgradeArray[i] = Upgrade_system.Instance.GetRandomUpgrade();
+            Debug.Log($"Dlugosc upgradeArray {upgradeArray[0]}");
 
             if (upgradeButtonsList == null) Debug.LogError("Lista przycisków to NULL!");
             else if (upgradeButtonsList[i] == null) Debug.LogError($"Przycisk pod indeksem {i} to NULL!");
@@ -69,18 +70,18 @@ public class MainShop : MonoBehaviour
             else if (upgradeArray[i] == null) Debug.LogError($"Ulepszenie pod indeksem {i} to NULL!");
 
             upgradeButtonsList[i].nameTmp.text = upgradeArray[i].Name;
-            upgradeButtonsList[i].costTmp.text = $"Cost: {upgradeArray[i].Cost}";
+            upgradeButtonsList[i].costTmp.text = $"Cost: {upgradeArray[i].cost}";
         }
     }
     public void UpgradeButton(int buttonIndex)
     {
 
-        if (MoneySystem.Instance.currentMoney >= upgradeArray[buttonIndex - 1].Cost && PinBallsManager.Instance.oneBallBlooming)
+        if (MoneySystem.Instance.currentMoney >= upgradeArray[buttonIndex - 1].cost && PinBallsManager.Instance.oneBallBlooming)
         {
-            if (!PinBallsManager.Instance.ballToUpgrade.Upgrades.Contains(upgradeArray[buttonIndex - 1].Type))
+            if (!PinBallsManager.Instance.ballToUpgrade.Upgrades.Contains(upgradeArray[buttonIndex - 1]))
             {
-                MoneySystem.Instance.takeMoney(upgradeArray[buttonIndex - 1].Cost);
-                upgradeArray[buttonIndex - 1].Effect(PinBallsManager.Instance.ballToUpgrade);
+                MoneySystem.Instance.takeMoney(upgradeArray[buttonIndex - 1].cost);
+                upgradeArray[buttonIndex - 1].ApplyEffect(PinBallsManager.Instance.ballToUpgrade);
             }
         }
         else
