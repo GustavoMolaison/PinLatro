@@ -320,6 +320,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.yassy.assetdependencyviewer": {
+      "version": "https://github.com/yassy0413/UnityAssetDependencyViewer.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "72e67e878f10c7f8910ad05aadae3a7046877a5f"
+    },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
       "depth": 0,

@@ -4,7 +4,7 @@ using System.Collections;
 
 public class Racer : Upgrade
 {
-    public override string UpgradeName => "Racer";
+   
 
     private Ball BallUpgraded;
     private Rigidbody2D BallRb;
@@ -85,7 +85,7 @@ public class Racer : Upgrade
 
         RacerParticles.transform.position = BallUpgraded.transform.position;
 
-        // Poprawka CS0618: u¿yj main.startSpeed zamiast przestarza³ego startSpeed
+        // Poprawka CS0618: uï¿½yj main.startSpeed zamiast przestarzaï¿½ego startSpeed
         var mainModule = RacerParticles.main;
         mainModule.startSpeed = VelocitySave[1];
 

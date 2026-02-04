@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sliding : Upgrade
 {
-    public override string UpgradeName => "Sliding";
+   
 
     public LayerMask wallsLayers;
    

@@ -60,8 +60,7 @@ public class PinBallsManager : MonoBehaviour
                 }
             }
 
-            Debug.Log($"Is Blooming {oneBallBlooming}");
-            Debug.Log($"allBalls count {allBalls.Count}");
+            
 
         }
         else

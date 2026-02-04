@@ -35,7 +35,7 @@ public class MainShop : MonoBehaviour
 
     private void Awake()
     {
-        // Jeœli instancja ju¿ istnieje (np. duplikat), niszczymy ten obiekt
+        // Jeï¿½li instancja juï¿½ istnieje (np. duplikat), niszczymy ten obiekt
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -60,13 +60,13 @@ public class MainShop : MonoBehaviour
         {
             
             upgradeArray[i] = Upgrade_system.Instance.GetRandomUpgrade();
-            Debug.Log($"Dlugosc upgradeArray {upgradeArray[0]}");
+            
 
-            if (upgradeButtonsList == null) Debug.LogError("Lista przycisków to NULL!");
+            if (upgradeButtonsList == null) Debug.LogError("Lista przyciskï¿½w to NULL!");
             else if (upgradeButtonsList[i] == null) Debug.LogError($"Przycisk pod indeksem {i} to NULL!");
             else if (upgradeButtonsList[i].nameTmp == null) Debug.LogError($"Komponent Text (nameTmp) w przycisku {i} nie jest przypisany!");
 
-            if (upgradeArray == null) Debug.LogError("Tablica ulepszeñ to NULL!");
+            if (upgradeArray == null) Debug.LogError("Tablica ulepszeï¿½ to NULL!");
             else if (upgradeArray[i] == null) Debug.LogError($"Ulepszenie pod indeksem {i} to NULL!");
 
             upgradeButtonsList[i].nameTmp.text = upgradeArray[i].Name;

@@ -318,51 +318,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9186015914731391448, guid: c1ab27b846955ac4d98271b15f045027, type: 3}
   m_PrefabInstance: {fileID: 813524934}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &139776345
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 139776346}
-  - component: {fileID: 139776347}
-  m_Layer: 0
-  m_Name: Evomanager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &139776346
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139776345}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1423231918}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &139776347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139776345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 728f3a5af53930648b5782060d8e09ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EvolutionManager
-  recipes: []
 --- !u!1 &154507790
 GameObject:
   m_ObjectHideFlags: 0
@@ -4417,9 +4372,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2998103258739038331, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1204670869}
-    - targetCorrespondingSourceObject: {fileID: 2998103258739038331, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 139776346}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
 --- !u!1001 &2999219817091469418

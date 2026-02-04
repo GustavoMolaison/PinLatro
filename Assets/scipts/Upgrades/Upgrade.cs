@@ -8,7 +8,7 @@ public abstract class Upgrade : MonoBehaviour
 {
   public abstract void apply(Ball ballRef);
 
-  public abstract string UpgradeName { get; }
+  
 
 }
 
