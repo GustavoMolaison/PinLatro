@@ -1450,6 +1450,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 801185433}
   m_SourcePrefab: {fileID: 7243324766535440047, guid: 8a0d9ce930c7cc94a85e8d968a17f514, type: 3}
+--- !u!114 &737419269 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 50940536930482276, guid: dee7af26a54455a488d6885e4774704b, type: 3}
+  m_PrefabInstance: {fileID: 6538976833201992693}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8a615b0f32d7543a0a4b9aef224ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!4 &738434414 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 126468937336144472, guid: b7c98c0e03cd89740a6cccd7c2d58289, type: 3}
@@ -1482,61 +1493,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!1 &795360821
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 795360822}
-  - component: {fileID: 795360823}
-  m_Layer: 0
-  m_Name: PinballManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &795360822
+--- !u!4 &795360822 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6499599361501331413, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+  m_PrefabInstance: {fileID: 2321953057829446375}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795360821}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1423231918}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &795360823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795360821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95d3168f76c359b43860a45e1975011b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PinBalsManager
-  allBalls: []
-  pinaBallGates:
-  - {fileID: 0}
-  - {fileID: 1732140222}
-  - {fileID: 1310134370}
-  spawnBalls: {fileID: 964786522}
-  waitingRoom: {fileID: 1747204955}
-  ballsInQueue: []
-  ballsInLaunchPad: []
-  ballToUpgrade: {fileID: 0}
-  oneBallBlooming: 0
 --- !u!1 &801185431 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3888481672020999207, guid: 8a0d9ce930c7cc94a85e8d968a17f514, type: 3}
@@ -3498,6 +3459,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1636897412 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5962676705985726857, guid: dee7af26a54455a488d6885e4774704b, type: 3}
+  m_PrefabInstance: {fileID: 6538976833201992693}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8a615b0f32d7543a0a4b9aef224ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!4 &1682560879 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8017447813648624772, guid: d86901b59166d3546b53a28fbd4c73be, type: 3}
@@ -4029,6 +4001,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2073734909 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6903897075832561406, guid: dee7af26a54455a488d6885e4774704b, type: 3}
+  m_PrefabInstance: {fileID: 6538976833201992693}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8a615b0f32d7543a0a4b9aef224ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!4 &2100390500 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 898756450219087936, guid: f74fa35407c215f48be94ea86836f489, type: 3}
@@ -4422,6 +4405,99 @@ PrefabInstance:
       addedObject: {fileID: 139776346}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
+--- !u!1001 &2321953057829446375
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1423231918}
+    m_Modifications:
+    - target: {fileID: 234838758091117666, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: m_Name
+      value: PinballManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040420040906557258, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: spawnBalls
+      value: 
+      objectReference: {fileID: 964786522}
+    - target: {fileID: 5040420040906557258, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: waitingRoom
+      value: 
+      objectReference: {fileID: 1747204955}
+    - target: {fileID: 5040420040906557258, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: newBallSpawn
+      value: 
+      objectReference: {fileID: 964786521}
+    - target: {fileID: 5040420040906557258, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: 'pinaBallGates.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1732140222}
+    - target: {fileID: 5040420040906557258, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: 'pinaBallGates.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1310134370}
+    - target: {fileID: 5040420040906557258, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: upgradeHolderUIs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040420040906557258, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: 'upgradeHolderUIs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1636897412}
+    - target: {fileID: 5040420040906557258, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: 'upgradeHolderUIs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 737419269}
+    - target: {fileID: 5040420040906557258, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: 'upgradeHolderUIs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2073734909}
+    - target: {fileID: 6499599361501331413, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499599361501331413, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499599361501331413, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499599361501331413, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499599361501331413, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499599361501331413, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499599361501331413, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499599361501331413, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499599361501331413, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499599361501331413, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 33bf6485546bd1642bd1b2a3506559e9, type: 3}
 --- !u!1001 &2999219817091469418
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4860,6 +4936,14 @@ PrefabInstance:
     - target: {fileID: 7616383189033345462, guid: dee7af26a54455a488d6885e4774704b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: MainShop, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726268030100717127, guid: dee7af26a54455a488d6885e4774704b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -942.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726268030100717127, guid: dee7af26a54455a488d6885e4774704b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -525.63
       objectReference: {fileID: 0}
     - target: {fileID: 7822251280013813974, guid: dee7af26a54455a488d6885e4774704b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState

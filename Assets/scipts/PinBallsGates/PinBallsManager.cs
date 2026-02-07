@@ -18,9 +18,13 @@ public class PinBallsManager : MonoBehaviour
     public List<Ball> ballsInQueue = new List<Ball>();
     public List<Ball> ballsInLaunchPad = new List<Ball>();
 
+    public List<UpgradeHolderUI> upgradeHolderUIs = new List<UpgradeHolderUI>();
+
     public Ball ballToUpgrade;
 
     public bool oneBallBlooming;
+
+    public GameObject newBallSpawn;
     public static PinBallsManager Instance { get; private set; }
 
     void Awake()
@@ -102,6 +106,21 @@ public class PinBallsManager : MonoBehaviour
         {
             ballRef.ResetUpgrades();
         }
+    }
+
+
+    public void AddNewBallThroughShop()
+    {
+        MoneySystem.Instance.takeMoney(MainShop.Instance.newSlotCost[allBalls.Count - 1]);
+
+        GameObject newBallParent = Instantiate(MainShop.Instance.ballPrefab, newBallSpawn.transform.position, Quaternion.identity);
+        Ball newBall = newBallParent.GetComponent<Ball>();
+            
+        allBalls.Add(newBall);
+        newBall.BallToWaitingRoom();
+        newBall.upgradeHolderUI = upgradeHolderUIs[allBalls.Count - 1];
+
+        NewSlotHelper.Instance.costTmp.text = $"Cost: {MainShop.Instance.newSlotCost[Instance.allBalls.Count - 1]}";
     }
 
 }

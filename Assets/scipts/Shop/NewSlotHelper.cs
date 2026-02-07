@@ -7,9 +7,18 @@ public class NewSlotHelper : MonoBehaviour
     public TMP_Text costTmp;
     public TMP_Text nameTmp;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
+    public static NewSlotHelper Instance { get; private set; }
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+        
         Transform nameTransform = this.transform.Find("ButtonText");
         nameTmp = nameTransform.GetComponent<TMP_Text>();
 

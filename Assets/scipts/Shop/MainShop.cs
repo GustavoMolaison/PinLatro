@@ -22,12 +22,12 @@ public class MainShop : MonoBehaviour
 
     [SerializeField] private List<ButtonHelper> upgradeButtonsList;
 
-    public NewSlotHelper NewSlotHelper;
+    // public NewSlotHelper NewSlotHelper;
 
     public GameObject ballPrefab;
     
 
-    public GameObject newBallSpawn;
+    // public GameObject newBallSpawn;
   
     [SerializeField] private TMP_Text leaveShopButton;
 
@@ -49,7 +49,7 @@ public class MainShop : MonoBehaviour
     void Start()
     {
         upgradeArray = new UpgradesSO[upgradeButtonsList.Count];
-        NewSlotHelper.costTmp.text = $"Cost: {newSlotCost[0]}";
+        NewSlotHelper.Instance.nameTmp.text = $"Cost: {newSlotCost[0]}";
     }
 
 
@@ -98,20 +98,12 @@ public class MainShop : MonoBehaviour
         
         if (PinBallsManager.Instance.allBalls.Count < 3 && MoneySystem.Instance.currentMoney >= newSlotCost[PinBallsManager.Instance.allBalls.Count - 1])
         {
+            PinBallsManager.Instance.AddNewBallThroughShop();
 
-            MoneySystem.Instance.takeMoney(newSlotCost[PinBallsManager.Instance.allBalls.Count - 1]);
-
-            GameObject newBallParent = Instantiate(ballPrefab, newBallSpawn.transform.position, Quaternion.identity);
-            Ball newBall = newBallParent.GetComponent<Ball>();
-            
-            PinBallsManager.Instance.allBalls.Add(newBall);
-            newBall.BallToWaitingRoom();
-
-            NewSlotHelper.costTmp.text = $"Cost: {newSlotCost[PinBallsManager.Instance.allBalls.Count - 1]}";
         }
         else
         {
-            NewSlotHelper.tooPoor();
+            NewSlotHelper.Instance.tooPoor();
         }
     }
 

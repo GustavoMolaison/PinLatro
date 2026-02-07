@@ -23,7 +23,7 @@ public class Game_manager : MonoBehaviour
 
     void Awake()
     {
-        // Jeœli instancja ju¿ istnieje (np. duplikat), niszczymy ten obiekt
+        // Jeï¿½li instancja juï¿½ istnieje (np. duplikat), niszczymy ten obiekt
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -40,7 +40,7 @@ public class Game_manager : MonoBehaviour
 
         if( Score_system.Instance.stage == 1)
         {
-            GameObject newBallParent = Instantiate(MainShop.Instance.ballPrefab, MainShop.Instance.newBallSpawn.transform.position, Quaternion.identity);
+            GameObject newBallParent = Instantiate(MainShop.Instance.ballPrefab, PinBallsManager.Instance.newBallSpawn.transform.position, Quaternion.identity);
             Ball newBall = newBallParent.GetComponent<Ball>();
             newBall.BallToWaitingRoom();
             PinBallsManager.Instance.allBalls.Add(newBall);
