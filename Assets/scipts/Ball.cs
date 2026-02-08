@@ -31,6 +31,8 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
 
     public GameObject whenPickedBloom;
 
+    public UpgradeHolderUI upgradeHolderUI;
+
     public bool ball_out_of_pit = false;
     public bool InLaunchPad;
     public bool inWaitingRoom;

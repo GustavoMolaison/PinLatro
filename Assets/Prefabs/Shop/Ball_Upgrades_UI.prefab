@@ -58,6 +58,8 @@ MonoBehaviour:
   - {fileID: 1900562579481482801}
   - {fileID: 5359562792412883132}
   BallStuatue: {fileID: 1666244835622903397}
+  EnrolledBall: {fileID: 0}
+  UpgradeSprites: []
   BallName: {fileID: 0}
 --- !u!1 &1666244835622903397
 GameObject:
@@ -69,6 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4110275927674149853}
   - component: {fileID: 4551064200577061809}
+  - component: {fileID: 1521431446457408990}
   m_Layer: 5
   m_Name: PinBallStatue
   m_TagString: Untagged
@@ -149,6 +152,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1521431446457408990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666244835622903397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0263ed08bdb1afa4385934b34b16c09d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallStatue
 --- !u!1 &1900562579481482801
 GameObject:
   m_ObjectHideFlags: 0

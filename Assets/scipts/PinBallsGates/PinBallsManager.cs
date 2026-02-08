@@ -118,7 +118,9 @@ public class PinBallsManager : MonoBehaviour
             
         allBalls.Add(newBall);
         newBall.BallToWaitingRoom();
+        
         newBall.upgradeHolderUI = upgradeHolderUIs[allBalls.Count - 1];
+        upgradeHolderUIs[allBalls.Count - 1].EnrolledBall = newBall;
 
         NewSlotHelper.Instance.costTmp.text = $"Cost: {MainShop.Instance.newSlotCost[Instance.allBalls.Count - 1]}";
     }
