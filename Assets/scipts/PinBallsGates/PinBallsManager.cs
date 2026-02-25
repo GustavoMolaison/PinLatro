@@ -20,6 +20,8 @@ public class PinBallsManager : MonoBehaviour
 
     public List<UpgradeHolderUI> upgradeHolderUIs = new List<UpgradeHolderUI>();
 
+    public List<BallStatue> ballStatues = new List<BallStatue>();
+
     public Ball ballToUpgrade;
 
     public bool oneBallBlooming;
@@ -75,6 +77,18 @@ public class PinBallsManager : MonoBehaviour
 
     }
 
+    public void DestroyBallCleanUp(Ball ball)
+    {
+        allBalls.Remove(ball);
+        ballsInLaunchPad.Remove(ball);
+        ballsInQueue.Remove(ball);
+
+        allBalls.RemoveAll(item => item == null);
+        ballsInLaunchPad.RemoveAll(item => item == null);
+        ballsInQueue.RemoveAll(item => item == null);
+        
+    }
+
     public void oneBallPicked(Ball newBloomer)
     {
         foreach(Ball ball in allBalls)
@@ -83,6 +97,7 @@ public class PinBallsManager : MonoBehaviour
             {
                 ball.whenPickedBloom.SetActive(false);
                 ball.isBlooming = false;
+                ball.ballStatue.whenPickedBloom.SetActive(false);
             }
               
             }
@@ -111,6 +126,7 @@ public class PinBallsManager : MonoBehaviour
 
     public void AddNewBallThroughShop()
     {
+        
         MoneySystem.Instance.takeMoney(MainShop.Instance.newSlotCost[allBalls.Count - 1]);
 
         GameObject newBallParent = Instantiate(MainShop.Instance.ballPrefab, newBallSpawn.transform.position, Quaternion.identity);
@@ -120,9 +136,71 @@ public class PinBallsManager : MonoBehaviour
         newBall.BallToWaitingRoom();
         
         newBall.upgradeHolderUI = upgradeHolderUIs[allBalls.Count - 1];
+        newBall.ballStatue = ballStatues[allBalls.Count - 1];
+
         upgradeHolderUIs[allBalls.Count - 1].EnrolledBall = newBall;
+        ballStatues[allBalls.Count - 1].EnrolledBall = newBall;
 
         NewSlotHelper.Instance.costTmp.text = $"Cost: {MainShop.Instance.newSlotCost[Instance.allBalls.Count - 1]}";
+    }
+
+    public void AddNewBallThroughEvolution(List<UpgradesSO> upgrades)
+    {
+        
+        
+
+        GameObject newBallParent = Instantiate(MainShop.Instance.ballPrefab, newBallSpawn.transform.position, Quaternion.identity);
+        Ball newBall = newBallParent.GetComponent<Ball>();
+        
+        
+
+        allBalls.Add(newBall);
+        newBall.BallToWaitingRoom();
+        Debug.Log($"allBalls.Count: {allBalls.Count}");
+        
+        // if (allBalls.Count == 0)
+        // {
+        //     newBall.upgradeHolderUI = upgradeHolderUIs[0];
+        //     newBall.ballStatue = ballStatues[0];
+
+        //     upgradeHolderUIs[0].EnrolledBall = newBall;
+        //     ballStatues[0].EnrolledBall = newBall;
+        // }
+        // else
+        // {
+            newBall.upgradeHolderUI = upgradeHolderUIs[allBalls.Count - 1];
+            newBall.ballStatue = ballStatues[allBalls.Count - 1];
+
+            upgradeHolderUIs[allBalls.Count - 1].EnrolledBall = newBall;
+            ballStatues[allBalls.Count - 1].EnrolledBall = newBall;
+
+        // }
+        
+        Debug.Log($"Znaleziono {upgrades.Count} upgrades dla tych kul hellyea!");
+        foreach(UpgradesSO upgrade in upgrades)
+        {
+            newBall.AddUpgrade(upgrade);
+        }
+
+        
+    }
+
+    public void AddNewBallWithoutShop()
+    {
+        
+        GameObject newBallParent = Instantiate(MainShop.Instance.ballPrefab, newBallSpawn.transform.position, Quaternion.identity);
+        Ball newBall = newBallParent.GetComponent<Ball>();
+            
+        allBalls.Add(newBall);
+        newBall.BallToWaitingRoom();
+        
+        newBall.upgradeHolderUI = upgradeHolderUIs[allBalls.Count - 1];
+        newBall.ballStatue = ballStatues[allBalls.Count - 1];
+
+        upgradeHolderUIs[allBalls.Count - 1].EnrolledBall = newBall;
+        ballStatues[allBalls.Count - 1].EnrolledBall = newBall;
+
+       
     }
 
 }

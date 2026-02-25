@@ -6,10 +6,10 @@ public class UpgradeHolderUI : MonoBehaviour
 
 {
     public GameObject[] HolderCords;
-    public GameObject BallStuatue;
+    public GameObject BallStatueRef;
     
     public Ball EnrolledBall;
-    public List<Sprite> UpgradeSprites;
+    public Sprite DeflaultSprite;
     public TMPro.TMP_Text BallName;
     
     public static UpgradeHolderUI Instance { get; private set; }
@@ -26,17 +26,38 @@ public class UpgradeHolderUI : MonoBehaviour
             Instance = this;
         }
 
-        HolderCords = GameObject.FindGameObjectsWithTag("UpgradeHoldPlace");
+        
 
 
     }
+    
 
-    public void UpdateUpgradesSprites(List<UpgradesSO> Upgrades)
+    public void UpdateUpgradesSprites()
     {
-        for(int i = 0; i < HolderCords.Length; i++)
+        for(int i = 0; i < EnrolledBall.Upgrades.Count; i++)
         {
-            // Spirte logic here
+            Debug.Log($"Updating upgrade sprite for slot {i} with upgrade {EnrolledBall.Upgrades[i].name}");
+            SpriteRenderer spriteRenderer = HolderCords[i].GetComponent<SpriteRenderer>();
+            // spriteRenderer.material = EnrolledBall.Upgrades[i].upgradeMaterial;
+
+            spriteRenderer.sprite = EnrolledBall.Upgrades[i].upgradeSprite;
+            // Debug.Log(i);
+            // GameObject newSprite = Instantiate(EnrolledBall.Upgrades[i].VisualUIprefab, HolderCords[i].transform.position, Quaternion.identity);
+            
         }
+    }
+
+    public void ResetHolder()
+    {
+        for (int i = 0; i < HolderCords.Length; i++)
+        {
+            SpriteRenderer spriteRenderer = HolderCords[i].GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = DeflaultSprite;
+        }
+
+        EnrolledBall = null;
+        BallStatueRef.GetComponent<BallStatue>().ResetStatue();
+        
     }
 
     public void SetBallName(string name)

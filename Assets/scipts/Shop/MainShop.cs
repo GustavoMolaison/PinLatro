@@ -78,11 +78,13 @@ public class MainShop : MonoBehaviour
 
         if (MoneySystem.Instance.currentMoney >= upgradeArray[buttonIndex - 1].cost && PinBallsManager.Instance.oneBallBlooming)
         {
-            if (!PinBallsManager.Instance.ballToUpgrade.Upgrades.Contains(upgradeArray[buttonIndex - 1]))
-            {
-                MoneySystem.Instance.takeMoney(upgradeArray[buttonIndex - 1].cost);
-                upgradeArray[buttonIndex - 1].ApplyEffect(PinBallsManager.Instance.ballToUpgrade);
-            }
+                bool takemoney;
+                takemoney = upgradeArray[buttonIndex - 1].ApplyEffect(PinBallsManager.Instance.ballToUpgrade);
+                if (takemoney)
+                {
+                    MoneySystem.Instance.takeMoney(upgradeArray[buttonIndex - 1].cost);
+                }
+            
         }
         else
         {

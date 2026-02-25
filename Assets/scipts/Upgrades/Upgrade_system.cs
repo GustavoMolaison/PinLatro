@@ -15,8 +15,8 @@ public enum UpgradeType
     Portal,
     Sliding,
     Racer,
-
-    WallRacer
+    WallRacer,
+    StarTunnel
 }
 
 

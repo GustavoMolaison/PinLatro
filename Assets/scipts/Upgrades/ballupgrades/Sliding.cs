@@ -16,7 +16,7 @@ public class Sliding : Upgrade
 
     private ParticleSystem SparklesParticle;
 
-    public static Sliding Instance { get; private set; }
+    
     private void Awake()
     {
         SparklesParticle = GetComponent<ParticleSystem>();

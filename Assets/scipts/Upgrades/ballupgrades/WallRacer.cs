@@ -3,18 +3,54 @@ using UnityEngine;
 public class WallRacer : Upgrade
 {
     Ball ballRef;
+    Rigidbody2D BallRb;
     private ParticleSystem SparklesParticle;
 
+    private float BallVelocity;
+    private float[] VelocitySave = {0, 0};
 
-    public override void apply(Ball ballReff)
+    private float PointsToGive;
+    private int PointsToGiveInt;
+    [SerializeField] private float PointsMultiplier = 0.1f;
+    
+   
+    private void Awake()
     {
-        Debug.Log("DodajeszPORTAL??!");
+        SparklesParticle = GetComponent<ParticleSystem>();
+        SparklesParticle.Stop();
+
+        this.gameObject.SetActive(false);
+    }
+    public override void apply(Ball ballReff) 
+    {
+        
+        this.gameObject.SetActive(true);
         ballRef = ballReff;
         
         ballRef.WhileColliding += speedBoost;
         ballRef.NoMoreColliding += speedBoostOff;
+
+        ballRef.OnHitEventNoParam += racerEffect;
         
     }
+
+    void Update()
+       {
+        if(ballRef != null)
+        {
+            if (BallRb == null)
+            {
+                BallRb = ballRef.GetComponent<Rigidbody2D>();
+            }
+
+            BallVelocity = BallRb.linearVelocity.magnitude;
+            VelocitySave[1] = VelocitySave[0];
+            VelocitySave[0] = BallVelocity;
+
+        }
+        
+        
+       }
 
 
     public void speedBoost(Collision2D Coll, Ball ballRef)
@@ -27,7 +63,7 @@ public class WallRacer : Upgrade
 
         if (SparklesParticle.emission.enabled == false)
              {
-                
+                Debug.Log("PARTICLES ON");
                 ParticlesOnOf(true);
              }
 
@@ -43,8 +79,8 @@ public class WallRacer : Upgrade
         var shapeModule = SparklesParticle.shape;
         var velocity = SparklesParticle.velocityOverLifetime;
         var emission = SparklesParticle.emission;
-        shapeModule.rotation = new Vector3(0, 0, angle - 90f);
 
+        shapeModule.rotation = new Vector3(0, 0, angle - 90f);
         emission.rateOverTime = speed;
         
        ///////// Boost logcic //////////
@@ -57,7 +93,7 @@ public class WallRacer : Upgrade
                 
                 
 
-            }
+        }
 
         public void speedBoostOff(Collision2D Coll, Ball ballRef)
         {
@@ -74,7 +110,28 @@ public class WallRacer : Upgrade
        }
 
         
+    
+
+    public void racerEffect()
+    {
+     
+    
+
+        
+
+        if (VelocitySave[1] > 10)
+        {
+            PointsToGive = VelocitySave[0] * PointsMultiplier;
+            PointsToGiveInt = (int)PointsToGive;
+        }
+
+        
+        Score_system.Instance.AddpointUpgrades(PointsToGiveInt, ballRef);
     }
+
+}
+
+
 
    
     

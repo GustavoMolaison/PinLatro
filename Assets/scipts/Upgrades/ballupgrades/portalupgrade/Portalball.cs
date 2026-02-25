@@ -61,6 +61,7 @@ public class Portalball: Upgrade
                 {
                     BluePortal.SetActive(true);
                 }
+                BluePortal.transform.SetParent(null);
 
                 ContactPoint2D contact = Coll.GetContact(0);
                 BluePortal.transform.position = contact.point;
@@ -76,6 +77,7 @@ public class Portalball: Upgrade
                 {
                     OrangePortal.SetActive(true);
                 }
+                OrangePortal.transform.SetParent(null);
 
                 ContactPoint2D contact = Coll.GetContact(0);
                 OrangePortal.transform.position = contact.point;

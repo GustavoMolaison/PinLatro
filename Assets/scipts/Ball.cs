@@ -28,10 +28,14 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
     public event Action OnHitEventNoParam;
     public event Action<Collision2D, Ball> WhileColliding;
     public event Action<Collision2D, Ball> NoMoreColliding;
+    public event Action OnEnterAir;
+    public event Action OnLand;
 
     public GameObject whenPickedBloom;
 
     public UpgradeHolderUI upgradeHolderUI;
+
+    public BallStatue ballStatue;
 
     public bool ball_out_of_pit = false;
     public bool InLaunchPad;
@@ -39,6 +43,7 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
     public bool isBlooming = false;
     public bool isPressed;
     public bool isDragging;
+    public bool inAirOldState = false;
 
     public GameObject BallToMerge;
     private float oldGravityScale;
@@ -48,7 +53,12 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
     public List<UpgradesSO> Upgrades;
 
     public float OverlapPercentage;
+
+    public int upgradeSlots = 3;
     public static Ball Instance { get; private set; }
+
+    private float inAirTimer = 0f;
+    private float inLandTimer = 0f;
 
     void Start()
     {
@@ -57,12 +67,36 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
         
 
     }
+    
+    public void DestroyBallCleanUp()
+    {
+        this.upgradeHolderUI.ResetHolder();
+        PinBallsManager.Instance.DestroyBallCleanUp(this);
+        Destroy(this.gameObject);
+    }
+    // void OnDestroy()
+    // {
+        
+    //     this.upgradeHolderUI.ResetHolder();
+    //     PinBallsManager.Instance.DestroyBallCleanUp(this);
+    //     Debug.Log($"allBalls.Count BALAALALALALL: {PinBallsManager.Instance.allBalls.Count}");
+        
+    // }
+    public void AddUpgrade(UpgradesSO upgrade)
+    {
+        upgrade.ApplyEffect(this);
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        
+
         whenPickedBloom.SetActive(!whenPickedBloom.activeSelf);
+        ballStatue.whenPickedBloom.SetActive(!ballStatue.whenPickedBloom.activeSelf);
         isBlooming = !isBlooming;
         PinBallsManager.Instance.oneBallPicked(this);
+
+        
         
 
     }
@@ -96,12 +130,13 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
         Collider.isTrigger = false;
 
         if (OverlapPercentage > 50f)
+        
         {
             
             Debug.Log("50% overlap! You can pick this ball for upgrade.");
             // 1. Sprawdź czy manager w ogóle żyje
             if (EvolutionManager.Instance == null) {
-            Debug.LogError("Mordo, zapomniałeś wrzucić EvolutionManager na scenę!");
+             Debug.LogError("Mordo, zapomniałeś wrzucić EvolutionManager na scenę!");
              return;
             }
 
@@ -119,7 +154,7 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
                 } else {
                       Debug.LogError("Uderzyłeś w obiekt z tagiem, ale bez skryptu Ball!");
                         }
-            EvolutionManager.Instance.GetEvolvedUpgrade(this, BallToMerge.GetComponent<Ball>());
+            // EvolutionManager.Instance.GetEvolvedUpgrade(this, BallToMerge.GetComponent<Ball>());
         }
 
         // rb.linearVelocity = currentVelocity;
@@ -130,6 +165,7 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
     void Update()
     {
         ball_mechanics?.Invoke();
+        
         //Debug.Log(isPressed);
 
         // if(isPressed && Game_manager.Instance.inShop)
@@ -154,6 +190,34 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
            rb.interpolation = RigidbodyInterpolation2D.Interpolate;
            rb.MovePosition(new Vector2(worldPos.x, worldPos.y));
         }
+
+       
+        bool currentlyInAir = !rb.IsTouchingLayers();
+
+        // 1. Wykrycie momentu wejścia w powietrze (JUMP/FALL)
+        if (currentlyInAir && !inAirOldState)
+        {
+          inAirTimer += Time.deltaTime;  
+          if (inAirTimer >= 0.1f)
+             {
+              inAirOldState = true; // AKTUALIZUJ STAN OD RAZU
+              inLandTimer = 0f;      // Resetuj timer przy wejściu w powietrze
+              OnEnterAir?.Invoke();
+             }
+        }
+
+            // 2. Wykrycie lądowania (LAND)
+        if (!currentlyInAir && inAirOldState)
+            {
+              inLandTimer += Time.deltaTime;
+              if (inLandTimer >= 0.1f) // Jeśli chcesz tego dziwnego opóźnienia lądowania
+              {
+               inAirTimer = 0f;
+               inAirOldState = false; // AKTUALIZUJ STAN
+               OnLand?.Invoke();
+              }
+}
+         
        
     }
 
@@ -189,11 +253,7 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
     public void OnTriggerEnter2D(Collider2D other)
     {
         
-        if (other.CompareTag("RespawnLine"))
-        {
-            
-            BallToWaitingRoom();
-        }
+        
         if (other.CompareTag("TimerStart"))
         {
            
@@ -231,6 +291,9 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
             CircleCollider2D otherCircle = other as CircleCollider2D;
            
             OverlapPercentage = GetCircleOverlapPercentage(Collider, otherCircle);
+
+            
+            
         }
     }
     public void BallToSpawn()

@@ -40,10 +40,7 @@ public class Game_manager : MonoBehaviour
 
         if( Score_system.Instance.stage == 1)
         {
-            GameObject newBallParent = Instantiate(MainShop.Instance.ballPrefab, PinBallsManager.Instance.newBallSpawn.transform.position, Quaternion.identity);
-            Ball newBall = newBallParent.GetComponent<Ball>();
-            newBall.BallToWaitingRoom();
-            PinBallsManager.Instance.allBalls.Add(newBall);
+            PinBallsManager.Instance.AddNewBallWithoutShop();
         }
        
 
@@ -73,6 +70,7 @@ public class Game_manager : MonoBehaviour
     private void Update()
     {
         //Debug.Log(allBalls[0].ball_out_of_pit);
+        // Debug.Log($"allBalls.Count: {PinBallsManager.Instance.allBalls.Count}");
         if (Input.GetKeyDown(KeyCode.R) && Score_system.Instance.stagepassed == true)
         {
            

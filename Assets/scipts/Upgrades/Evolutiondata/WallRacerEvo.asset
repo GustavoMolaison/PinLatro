@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EvolutionRecipe
   ingredientA: {fileID: 11400000, guid: 29f1e9ecaebf42547828d992e961783d, type: 2}
   ingredientB: {fileID: 11400000, guid: 7178578e11748ef47a9addc84bccc827, type: 2}
-  resultType: {fileID: 11400000, guid: 5050a6bbb85e50c44b09f6ded403032b, type: 2}
+  resultUpgrade: {fileID: 11400000, guid: 5050a6bbb85e50c44b09f6ded403032b, type: 2}

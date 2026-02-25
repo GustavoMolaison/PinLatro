@@ -5,16 +5,22 @@ using UnityEngine;
 public class UpgradesSO : ScriptableObject
 {
     public GameObject prefab;
+    public Material upgradeMaterial;
+    public Sprite upgradeSprite;
     public UpgradeType type;
     public int weight;
     public int cost;
     public Action<Ball> Effect;
 
-    [SerializeField] public string _displayName; // Tutaj wpisujesz ³adn¹ nazwê w Inspektorze
+    
+
+    [SerializeField] public string _displayName; // Tutaj wpisujesz ï¿½adnï¿½ nazwï¿½ w Inspektorze
     public string Name => _displayName;
 
-    public void ApplyEffect(Ball ballRef)
+    public bool ApplyEffect(Ball ballRef)
     {
+      if (!ballRef.Upgrades.Contains(this))
+      {
         Upgrade upgradeScript;
 
         GameObject newUpgrade = Instantiate(prefab, ballRef.transform);
@@ -24,6 +30,20 @@ public class UpgradesSO : ScriptableObject
         upgradeScript.apply(ballRef);
 
         ballRef.Upgrades.Add(this);
+
+        ballRef.upgradeHolderUI.UpdateUpgradesSprites();
+
+         SpriteRenderer spriteRenderer = ballRef.GetComponent<SpriteRenderer>();
+         spriteRenderer.sprite = upgradeSprite;
         
+        ballRef.ballStatue.UpdateBallSprite();
+        return true;
+      }
+
+      else
+      {
+        return false; 
+      }
+      
     }
 }
