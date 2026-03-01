@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sliding : Upgrade
 {
-    public override string UpgradeName => "Sliding";
+   
 
     public LayerMask wallsLayers;
    
@@ -16,7 +16,7 @@ public class Sliding : Upgrade
 
     private ParticleSystem SparklesParticle;
 
-    public static Sliding Instance { get; private set; }
+    
     private void Awake()
     {
         SparklesParticle = GetComponent<ParticleSystem>();

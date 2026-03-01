@@ -22,12 +22,12 @@ public class MainShop : MonoBehaviour
 
     [SerializeField] private List<ButtonHelper> upgradeButtonsList;
 
-    public NewSlotHelper NewSlotHelper;
+    // public NewSlotHelper NewSlotHelper;
 
     public GameObject ballPrefab;
     
 
-    public GameObject newBallSpawn;
+    // public GameObject newBallSpawn;
   
     [SerializeField] private TMP_Text leaveShopButton;
 
@@ -35,7 +35,7 @@ public class MainShop : MonoBehaviour
 
     private void Awake()
     {
-        // Jeœli instancja ju¿ istnieje (np. duplikat), niszczymy ten obiekt
+        // Jeï¿½li instancja juï¿½ istnieje (np. duplikat), niszczymy ten obiekt
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -49,7 +49,7 @@ public class MainShop : MonoBehaviour
     void Start()
     {
         upgradeArray = new UpgradesSO[upgradeButtonsList.Count];
-        NewSlotHelper.costTmp.text = $"Cost: {newSlotCost[0]}";
+        NewSlotHelper.Instance.nameTmp.text = $"Cost: {newSlotCost[0]}";
     }
 
 
@@ -60,13 +60,13 @@ public class MainShop : MonoBehaviour
         {
             
             upgradeArray[i] = Upgrade_system.Instance.GetRandomUpgrade();
-            Debug.Log($"Dlugosc upgradeArray {upgradeArray[0]}");
+            
 
-            if (upgradeButtonsList == null) Debug.LogError("Lista przycisków to NULL!");
+            if (upgradeButtonsList == null) Debug.LogError("Lista przyciskï¿½w to NULL!");
             else if (upgradeButtonsList[i] == null) Debug.LogError($"Przycisk pod indeksem {i} to NULL!");
             else if (upgradeButtonsList[i].nameTmp == null) Debug.LogError($"Komponent Text (nameTmp) w przycisku {i} nie jest przypisany!");
 
-            if (upgradeArray == null) Debug.LogError("Tablica ulepszeñ to NULL!");
+            if (upgradeArray == null) Debug.LogError("Tablica ulepszeï¿½ to NULL!");
             else if (upgradeArray[i] == null) Debug.LogError($"Ulepszenie pod indeksem {i} to NULL!");
 
             upgradeButtonsList[i].nameTmp.text = upgradeArray[i].Name;
@@ -78,11 +78,13 @@ public class MainShop : MonoBehaviour
 
         if (MoneySystem.Instance.currentMoney >= upgradeArray[buttonIndex - 1].cost && PinBallsManager.Instance.oneBallBlooming)
         {
-            if (!PinBallsManager.Instance.ballToUpgrade.Upgrades.Contains(upgradeArray[buttonIndex - 1]))
-            {
-                MoneySystem.Instance.takeMoney(upgradeArray[buttonIndex - 1].cost);
-                upgradeArray[buttonIndex - 1].ApplyEffect(PinBallsManager.Instance.ballToUpgrade);
-            }
+                bool takemoney;
+                takemoney = upgradeArray[buttonIndex - 1].ApplyEffect(PinBallsManager.Instance.ballToUpgrade);
+                if (takemoney)
+                {
+                    MoneySystem.Instance.takeMoney(upgradeArray[buttonIndex - 1].cost);
+                }
+            
         }
         else
         {
@@ -98,20 +100,12 @@ public class MainShop : MonoBehaviour
         
         if (PinBallsManager.Instance.allBalls.Count < 3 && MoneySystem.Instance.currentMoney >= newSlotCost[PinBallsManager.Instance.allBalls.Count - 1])
         {
+            PinBallsManager.Instance.AddNewBallThroughShop();
 
-            MoneySystem.Instance.takeMoney(newSlotCost[PinBallsManager.Instance.allBalls.Count - 1]);
-
-            GameObject newBallParent = Instantiate(ballPrefab, newBallSpawn.transform.position, Quaternion.identity);
-            Ball newBall = newBallParent.GetComponent<Ball>();
-            
-            PinBallsManager.Instance.allBalls.Add(newBall);
-            newBall.BallToWaitingRoom();
-
-            NewSlotHelper.costTmp.text = $"Cost: {newSlotCost[PinBallsManager.Instance.allBalls.Count - 1]}";
         }
         else
         {
-            NewSlotHelper.tooPoor();
+            NewSlotHelper.Instance.tooPoor();
         }
     }
 

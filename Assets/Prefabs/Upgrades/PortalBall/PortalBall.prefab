@@ -30,8 +30,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3120463861556868211}
   - {fileID: 464365737559336797}
+  - {fileID: 3120463861556868211}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4818762939971008042
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b702b4587763142bc8c668c3c3023a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Portalball
-  touchesPerPortal: 4
+  touchesPerPortal: 10
   ballRef: {fileID: 0}
   BluePortal: {fileID: 3831200799789796199}
   OrangePortal: {fileID: 1735284026722588745}

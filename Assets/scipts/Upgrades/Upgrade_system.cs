@@ -9,12 +9,15 @@ using System.Runtime.CompilerServices;
 using UnityEditor.PackageManager;
 
 
-// 1. Definicja typów ulepszeñ
+// 1. Definicja typï¿½w ulepszeï¿½
 public enum UpgradeType
 {
     Portal,
     Sliding,
-    Racer
+    Racer,
+    WallRacer,
+    StarTunnel,
+    Gambler,
 }
 
 
@@ -79,11 +82,11 @@ public class Upgrade_system : MonoBehaviour
         if (upgrades == null || upgrades.Count == 0)
         {
             
-            Debug.LogError("Brak zdefiniowanych ulepszeñ!");
+            Debug.LogError("Brak zdefiniowanych ulepszeï¿½!");
             return null;
         }
 
-        // Algorytm losowania wa¿onego (Weighted Random Choice)
+        // Algorytm losowania waï¿½onego (Weighted Random Choice)
         int randomValue = UnityEngine.Random.Range(0, _totalWeight);
         int currentSum = 0;
 
@@ -101,11 +104,11 @@ public class Upgrade_system : MonoBehaviour
             }
         }
 
-        // Fallback (nie powinien wyst¹piæ, jeœli matematyka jest poprawna
+        // Fallback (nie powinien wystï¿½piï¿½, jeï¿½li matematyka jest poprawna
         return null;
     }
 
-    // Metoda pomocnicza, jeœli potrzebujesz "zwyk³ego" losowania bez wag
+    // Metoda pomocnicza, jeï¿½li potrzebujesz "zwykï¿½ego" losowania bez wag
     public UpgradesSO GetUniformRandomUpgrade()
     {
         if (upgrades.Count == 0) return null;

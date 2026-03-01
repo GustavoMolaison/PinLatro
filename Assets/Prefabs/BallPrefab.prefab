@@ -169,11 +169,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f548d6137a032341b4b5b9482567d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseBall
-  Rb: {fileID: 0}
+  rb: {fileID: 0}
   whenPickedBloom: {fileID: 8300457794431781686}
+  upgradeHolderUI: {fileID: 0}
+  ballStatue: {fileID: 0}
   ball_out_of_pit: 0
   InLaunchPad: 0
+  inWaitingRoom: 0
+  isBlooming: 0
   isPressed: 0
+  isDragging: 0
+  BallToMerge: {fileID: 0}
+  Upgrades: []
+  OverlapPercentage: 0
 --- !u!1 &8300457794431781686
 GameObject:
   m_ObjectHideFlags: 0

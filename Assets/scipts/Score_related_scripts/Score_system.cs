@@ -15,6 +15,8 @@ public class Score_system : MonoBehaviour
 
     public int duration = 10; // Cintzas startowy
     public float timeRemaining;
+
+
     
     
 
@@ -34,17 +36,19 @@ public class Score_system : MonoBehaviour
     
     public bool stagepassed { get; set; } = false;
 
+    [SerializeField] private bool AddPointsInShop = false;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    // --- POCZ¥TEK SINGLETONA ---
-    // Statyczna zmienna dostêpna zewsz¹d
+    // --- POCZï¿½TEK SINGLETONA ---
+    // Statyczna zmienna dostï¿½pna zewszï¿½d
     public static Score_system Instance { get; private set; }
 
     private void Awake()
     {
-        // Jeœli instancja ju¿ istnieje (np. duplikat), niszczymy ten obiekt
+        // Jeï¿½li instancja juï¿½ istnieje (np. duplikat), niszczymy ten obiekt
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -168,7 +172,7 @@ public class Score_system : MonoBehaviour
    public void AddpointUpgrades(int amount, Ball BallRef)
     {
         
-        if (BallRef.ball_out_of_pit)
+        if (BallRef.ball_out_of_pit || AddPointsInShop)
         {
 
 

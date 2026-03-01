@@ -6,7 +6,7 @@ public class Portal : MonoBehaviour
     public Portalball portalball;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Sprawdzamy czy to co wlecia³o to pi³ka (u¿yj Tagu albo sprawdzania komponentu)
+        // Sprawdzamy czy to co wleciaï¿½o to piï¿½ka (uï¿½yj Tagu albo sprawdzania komponentu)
         if (other.CompareTag("Pinball"))
         {
             Teleport(other.gameObject);
@@ -30,12 +30,12 @@ public class Portal : MonoBehaviour
     {
         if (OrangePortal.activeSelf == true && portalball.teleportingBlue == false)
         {
-            float speed = portalball.ballRef.Rb.linearVelocity.magnitude;
+            float speed = portalball.ballRef.rb.linearVelocity.magnitude;
             go.transform.position = OrangePortal.transform.position;
             portalball.teleportingBlue = true;
             portalball.teleportingOrange = true;
 
-            portalball.ballRef.Rb.linearVelocity = OrangePortal.transform.up * speed;
+            portalball.ballRef.rb.linearVelocity = OrangePortal.transform.up * speed;
         }
 
         else

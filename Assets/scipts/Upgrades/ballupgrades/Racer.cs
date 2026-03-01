@@ -4,7 +4,7 @@ using System.Collections;
 
 public class Racer : Upgrade
 {
-    public override string UpgradeName => "Racer";
+   
 
     private Ball BallUpgraded;
     private Rigidbody2D BallRb;
@@ -29,16 +29,7 @@ public class Racer : Upgrade
         this.gameObject.SetActive(false);
     }
 
-    //private void Start()
-    //{
-    //    RacerParticles = GetComponent<ParticleSystem>();
-    //    RacerParticles.Stop();
-
-    //    this.gameObject.SetActive(false);
-
-    
-
-    // Update is called once per frame
+  
     void Update()
        {
         if(BallUpgraded != null)
@@ -85,7 +76,7 @@ public class Racer : Upgrade
 
         RacerParticles.transform.position = BallUpgraded.transform.position;
 
-        // Poprawka CS0618: u¿yj main.startSpeed zamiast przestarza³ego startSpeed
+      
         var mainModule = RacerParticles.main;
         mainModule.startSpeed = VelocitySave[1];
 
@@ -93,7 +84,6 @@ public class Racer : Upgrade
 
         if (VelocitySave[0] < 70)
         {
-            //Debug.Log((int)VelocitySave[1] / 7);
             RacerParticles.Emit((int)VelocitySave[1] / 5);
         }
 
@@ -109,12 +99,5 @@ public class Racer : Upgrade
         emission.enabled = active;
     }
 
-    //private IEnumerator DisableParticlesWithDelay(float delay)
-    //{
 
-    //    yield return new WaitForSeconds(delay);
-
-
-    //    ParticlesOnOf(false);
-    //}
 }
