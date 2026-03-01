@@ -126,18 +126,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 20
-        y: 109
-        width: 102
-        height: 103
+        y: 108
+        width: 103
+        height: 102
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 53eead2839c09d030800000000000000
+      spriteID: 1be33b49440c13149889ca750501efcd
       internalID: 3519858411461865013
       vertices: []
       indices: 
@@ -147,9 +147,9 @@ TextureImporter:
       name: spriteMap_1
       rect:
         serializedVersion: 2
-        x: 19
-        y: 0
-        width: 103
+        x: 175
+        y: 110
+        width: 101
         height: 101
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -157,9 +157,9 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1db75bc828d684a70800000000000000
+      spriteID: d3d9d14bf334eb94f82db5fc879167c0
       internalID: 8811413078424255441
       vertices: []
       indices: 
@@ -169,19 +169,19 @@ TextureImporter:
       name: spriteMap_2
       rect:
         serializedVersion: 2
-        x: 175
-        y: 2
-        width: 103
-        height: 103
+        x: 329
+        y: 109
+        width: 101
+        height: 101
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 521f5b593b86bac90800000000000000
+      spriteID: 19bf29d0aebb8b34fa6152bc156fd8f7
       internalID: -7157512062255107803
       vertices: []
       indices: 
@@ -191,19 +191,19 @@ TextureImporter:
       name: spriteMap_3
       rect:
         serializedVersion: 2
-        x: 333
-        y: 1
-        width: 102
-        height: 103
+        x: 20
+        y: 0
+        width: 101
+        height: 100
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5d2fe1cbfa23caeb0800000000000000
+      spriteID: f6c9d4804e0afbd48aaa460e94c0d652
       internalID: -4707331780152200491
       vertices: []
       indices: 
@@ -213,20 +213,42 @@ TextureImporter:
       name: spriteMap_4
       rect:
         serializedVersion: 2
-        x: 175
-        y: 110
+        x: 176
+        y: 3
         width: 101
         height: 101
-      alignment: 9
-      pivot: {x: 0.5035764, y: 0.4949933}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b9818384a963ed4b991ed0f091740c8
+      spriteID: 6788acad98e108a4c900f2d3c00a5fdf
       internalID: 686063183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spriteMap_5
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 2
+        width: 101
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e86f0904ddc2084c9f57b11b4311960
+      internalID: -1065556033
       vertices: []
       indices: 
       edges: []
@@ -243,13 +265,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceOnImport
+        value: False
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       spriteMap_0: 3519858411461865013
       spriteMap_1: 8811413078424255441
       spriteMap_2: -7157512062255107803
       spriteMap_3: -4707331780152200491
       spriteMap_4: 686063183
+      spriteMap_5: -1065556033
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

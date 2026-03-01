@@ -45,6 +45,8 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
     public bool isDragging;
     public bool inAirOldState = false;
 
+    public bool activateRings = true;
+
     public GameObject BallToMerge;
     private float oldGravityScale;
     private Vector3 currentVelocity;

@@ -87,13 +87,13 @@ TrailRenderer:
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 3
+    widthMultiplier: 2.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.010990143
-        value: 0.11729151
+        time: 0
+        value: 0.5
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -101,10 +101,10 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.55409604
-        value: 0.7127899
-        inSlope: 1.0157447
-        outSlope: 1.0157447
+        time: 0.11819559
+        value: 0.92504895
+        inSlope: 0.3435701
+        outSlope: 0.3435701
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
@@ -197,7 +197,7 @@ EdgeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 1
+  m_EdgeRadius: 2.4
   m_Points:
   - {x: -9.209357, y: 0}
   - {x: 2.499999, y: 0}

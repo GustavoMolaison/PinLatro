@@ -12,6 +12,7 @@ TagManager:
   - LaunchPad
   - UpgradeName
   - UpgradeCost
+  - PointRing
   layers:
   - Default
   - TransparentFX

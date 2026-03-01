@@ -16,7 +16,8 @@ public enum UpgradeType
     Sliding,
     Racer,
     WallRacer,
-    StarTunnel
+    StarTunnel,
+    Gambler,
 }
 
 

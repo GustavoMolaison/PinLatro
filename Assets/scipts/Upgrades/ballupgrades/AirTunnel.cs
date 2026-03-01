@@ -120,18 +120,18 @@ private float _scoreTimer;
             
         Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
 
-            // if (rb.linearVelocity.magnitude > 0.01f)
-            // {
+            if (rb.linearVelocity.magnitude > 0.01f)
+            {
             //    Debug.Log("Pinball in Air Tunnel");
                Vector2 direction = rb.linearVelocity.normalized;
                rb.AddForce(direction * speedBoost, ForceMode2D.Force);
                earningPoints = true;
             
-            //  }
-            //  else
-            //  {
-            //    earningPoints = false;
-            //  }
+             }
+             else
+             {
+               earningPoints = false;
+             }
         }
         else
         {

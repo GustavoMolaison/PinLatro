@@ -15,6 +15,8 @@ public class Score_system : MonoBehaviour
 
     public int duration = 10; // Cintzas startowy
     public float timeRemaining;
+
+
     
     
 
@@ -33,6 +35,8 @@ public class Score_system : MonoBehaviour
     
     
     public bool stagepassed { get; set; } = false;
+
+    [SerializeField] private bool AddPointsInShop = false;
 
 
 
@@ -168,7 +172,7 @@ public class Score_system : MonoBehaviour
    public void AddpointUpgrades(int amount, Ball BallRef)
     {
         
-        if (BallRef.ball_out_of_pit)
+        if (BallRef.ball_out_of_pit || AddPointsInShop)
         {
 
 
