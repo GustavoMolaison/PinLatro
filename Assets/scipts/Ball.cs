@@ -24,6 +24,8 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
     public Rigidbody2D rb;
     //List<Action> ball_mechanics = new List<Action>();
     public Action ball_mechanics;
+    public Action<Ball>  ball_mechanicsBallref;
+    public Action<Collision2D, Ball> ball_mechanicsCol;
     public event Action<Collision2D, Ball> OnHitEvent;
     public event Action OnHitEventNoParam;
     public event Action<Collision2D, Ball> WhileColliding;
@@ -61,6 +63,8 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
 
     private float inAirTimer = 0f;
     private float inLandTimer = 0f;
+
+    public float pinballSize = 0.7f;
 
     void Start()
     {
@@ -167,15 +171,17 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
     void Update()
     {
         ball_mechanics?.Invoke();
-        
+        ball_mechanicsBallref?.Invoke(this);
+
+
         //Debug.Log(isPressed);
 
         // if(isPressed && Game_manager.Instance.inShop)
         // {
         //     Debug.Log("WCISKAM");
-           
+
         // }
-       
+
         if (isDragging && Game_manager.Instance.inShop)
         {
             Camera mainCam = Camera.main;
@@ -236,8 +242,12 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
     public void AddMechanic(Action mechanic)
         {
           ball_mechanics += mechanic;
-
+          
         }
+    public void AddmechanicsBallref(Action<Ball> mechanic)
+    {
+        ball_mechanicsBallref += mechanic;
+    }
     public void ModifyBall(float? Mass = null,
                     float? LinearDamping = null,
                     float? AngularDampling = null,
@@ -309,9 +319,9 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
 
         this.transform.localScale *= 1 / 3f;
         
-        if (this.transform.localScale.x != 0.5 || this.transform.localScale.y != 0.5)
+        if (this.transform.localScale.x != pinballSize || this.transform.localScale.y != pinballSize)
         {
-            this.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+            this.transform.localScale = new Vector3(pinballSize, pinballSize, 1f);
         }
 
         if (!PinBallsManager.Instance.ballsInLaunchPad.Contains(this))

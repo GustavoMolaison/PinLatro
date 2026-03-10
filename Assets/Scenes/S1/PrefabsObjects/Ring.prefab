@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5573140525089855505}
   - component: {fileID: 3029113305178859489}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlueBounce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,6 +106,10 @@ PrefabInstance:
     - target: {fileID: -3888481672020999207, guid: d0426c370ba16934486a708056771252, type: 3}
       propertyPath: m_Name
       value: Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: -3888481672020999207, guid: d0426c370ba16934486a708056771252, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -3888481672020999207, guid: d0426c370ba16934486a708056771252, type: 3}
       propertyPath: m_TagString

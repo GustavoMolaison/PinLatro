@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae24d948a3d413e4e9251f6230143777, type: 3}
-  m_Name: StarTunnel
+  m_Name: RingChaser
   m_EditorClassIdentifier: Assembly-CSharp::UpgradesSO
-  prefab: {fileID: 3283561994667390407, guid: b91caae184b8a5d4eae801c281d14abc, type: 3}
+  prefab: {fileID: 2791274132868351433, guid: 27633c4c2e72231409113c5b546f9d21, type: 3}
   upgradeMaterial: {fileID: 0}
-  upgradeSprite: {fileID: -4707331780152200491, guid: 7f38aebd73f79094295942964eeb21fa, type: 3}
-  type: 4
-  weight: 50
-  cost: 50
-  _displayName: Star Tunnel
+  upgradeSprite: {fileID: 3519858411461865013, guid: 7f38aebd73f79094295942964eeb21fa, type: 3}
+  type: 6
+  weight: 40
+  cost: 30
+  _displayName: Ring Chaser

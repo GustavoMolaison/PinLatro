@@ -24,7 +24,7 @@ public class MainShop : MonoBehaviour
 
     // public NewSlotHelper NewSlotHelper;
 
-    public GameObject ballPrefab;
+    
     
 
     // public GameObject newBallSpawn;

@@ -27,6 +27,8 @@ public class PinBallsManager : MonoBehaviour
     public bool oneBallBlooming;
 
     public GameObject newBallSpawn;
+
+    public GameObject ballPrefab;
     public static PinBallsManager Instance { get; private set; }
 
     void Awake()
@@ -129,7 +131,7 @@ public class PinBallsManager : MonoBehaviour
         
         MoneySystem.Instance.takeMoney(MainShop.Instance.newSlotCost[allBalls.Count - 1]);
 
-        GameObject newBallParent = Instantiate(MainShop.Instance.ballPrefab, newBallSpawn.transform.position, Quaternion.identity);
+        GameObject newBallParent = Instantiate(ballPrefab, newBallSpawn.transform.position, Quaternion.identity);
         Ball newBall = newBallParent.GetComponent<Ball>();
             
         allBalls.Add(newBall);
@@ -149,7 +151,7 @@ public class PinBallsManager : MonoBehaviour
         
         
 
-        GameObject newBallParent = Instantiate(MainShop.Instance.ballPrefab, newBallSpawn.transform.position, Quaternion.identity);
+        GameObject newBallParent = Instantiate(ballPrefab, newBallSpawn.transform.position, Quaternion.identity);
         Ball newBall = newBallParent.GetComponent<Ball>();
         
         
@@ -188,7 +190,8 @@ public class PinBallsManager : MonoBehaviour
     public void AddNewBallWithoutShop()
     {
         
-        GameObject newBallParent = Instantiate(MainShop.Instance.ballPrefab, newBallSpawn.transform.position, Quaternion.identity);
+        GameObject newBallParent = Instantiate(ballPrefab, newBallSpawn.transform.position, Quaternion.identity);
+
         Ball newBall = newBallParent.GetComponent<Ball>();
             
         allBalls.Add(newBall);

@@ -1,11 +1,20 @@
+using Mono.Cecil;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class CameraMover : MonoBehaviour
 {
     public Transform shopPosition;   // Pusty obiekt ustawiony tam, gdzie ma byæ kamera w sklepie
     public Transform gamePosition;   // Pusty obiekt ustawiony tam, gdzie jest kamera gry
     public float speed = 5f;
+    public float zoomspeed = 5f;
 
+    public float gameFOV;
+    public float shopFOV;
+    private float targetFOV;
+
+    private Camera mCam;
     private Vector3 targetPosition;
 
     public static CameraMover Instance { get; private set; }
@@ -27,6 +36,11 @@ public class CameraMover : MonoBehaviour
     {
         // Na start kamera jest na pozycji gry
         targetPosition = transform.position;
+        mCam = GetComponent<Camera>();
+        
+        float currentFOV = mCam.fieldOfView;
+        targetFOV = gameFOV;
+
     }
 
     void Update()
@@ -37,6 +51,10 @@ public class CameraMover : MonoBehaviour
 
         // Wa¿ne! Upewnij siê, ¿e Z siê nie zmienia (w 2D to zazwyczaj -10)
         transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
+
+        float currentFOV = mCam.fieldOfView;
+        currentFOV = Mathf.MoveTowards(currentFOV, targetFOV, zoomspeed * Time.deltaTime);
+        mCam.fieldOfView = currentFOV;
     }
 
     // Podepnij to pod przycisk "Sklep"
@@ -45,6 +63,7 @@ public class CameraMover : MonoBehaviour
         Game_manager.Instance.inShop = true;
         Game_manager.Instance.inTable = false;
         targetPosition = shopPosition.position;
+        targetFOV = shopFOV;
     }
 
     // Podepnij to pod przycisk "Powrót"
@@ -53,5 +72,6 @@ public class CameraMover : MonoBehaviour
         Game_manager.Instance.inShop = false;
         Game_manager.Instance.inTable = true;
         targetPosition = gamePosition.position;
+        targetFOV = gameFOV;
     }
 }

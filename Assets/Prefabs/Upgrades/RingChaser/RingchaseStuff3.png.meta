@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ce418e48d14d482439c7835b55ca2a7a
+guid: c764dcd10b5971a4d874d5e56f1dabcc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4108068926700135740
-    second: startunnel3_0
+      213: 3143252066849310366
+    second: RingchaseStuff3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: startunnel3_0
+      name: RingchaseStuff3_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 121
-        height: 165
+        width: 65
+        height: 665
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4cad73f93153df6c0800000000000000
-      internalID: -4108068926700135740
+      spriteID: e96c014e9131f9b20800000000000000
+      internalID: 3143252066849310366
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      startunnel3_0: -4108068926700135740
+      RingchaseStuff3_0: 3143252066849310366
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -6,6 +6,8 @@ public class UpgradesSO : ScriptableObject
 {
     public GameObject prefab;
     public Material upgradeMaterial;
+    public Vector3 Color;
+    public int IndexInSpriteMap;
     public Sprite upgradeSprite;
     public UpgradeType type;
     public int weight;
@@ -37,6 +39,9 @@ public class UpgradesSO : ScriptableObject
          spriteRenderer.sprite = upgradeSprite;
         
         ballRef.ballStatue.UpdateBallSprite();
+
+        ColorShaderMixer.Instance.PassDataToSG(upgradeSprite, ballRef.Upgrades.IndexOf(this), ballRef.GetComponent<SpriteRenderer>());
+
         return true;
       }
 

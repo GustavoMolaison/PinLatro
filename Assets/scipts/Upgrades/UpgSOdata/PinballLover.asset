@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae24d948a3d413e4e9251f6230143777, type: 3}
-  m_Name: StarTunnel
+  m_Name: PinballLover
   m_EditorClassIdentifier: Assembly-CSharp::UpgradesSO
-  prefab: {fileID: 3283561994667390407, guid: b91caae184b8a5d4eae801c281d14abc, type: 3}
+  prefab: {fileID: 6690590515245437791, guid: 6eb88ceaff1b5e84db1b3c58c0607874, type: 3}
   upgradeMaterial: {fileID: 0}
-  upgradeSprite: {fileID: -4707331780152200491, guid: 7f38aebd73f79094295942964eeb21fa, type: 3}
-  type: 4
+  Color: {x: 255, y: 32, z: 255}
+  IndexInSpriteMap: 0
+  upgradeSprite: {fileID: 8811413078424255441, guid: 7f38aebd73f79094295942964eeb21fa, type: 3}
+  type: 7
   weight: 50
   cost: 50
-  _displayName: Star Tunnel
+  _displayName: PinballLover

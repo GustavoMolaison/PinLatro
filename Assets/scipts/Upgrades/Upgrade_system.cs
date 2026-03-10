@@ -18,6 +18,8 @@ public enum UpgradeType
     WallRacer,
     StarTunnel,
     Gambler,
+    RingChaser,
+    PinballLover
 }
 
 
