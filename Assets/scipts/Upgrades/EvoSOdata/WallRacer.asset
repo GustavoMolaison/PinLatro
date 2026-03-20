@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UpgradesSO
   prefab: {fileID: 7231163284593203453, guid: 81a36d2a619aba14cb903632fe2a1e7f, type: 3}
   upgradeMaterial: {fileID: 0}
-  upgradeSprite: {fileID: 3519858411461865013, guid: 7f38aebd73f79094295942964eeb21fa, type: 3}
+  Color: {x: 0, y: 0, z: 0}
+  IndexInSpriteMap: 0
+  upgradeSprite_B: {fileID: 4192823761142988925, guid: d3e31981e760d0d45b8bc911d022b23d, type: 3}
+  upgradeSprite_S: {fileID: 5244889342394430365, guid: 5ab451d8037e8d84b8e0acb3f9dc4af7, type: 3}
+  upgradeSprite: {fileID: -3739961528711624362, guid: 0948927b52e2449458a5922adcdc2fd6, type: 3}
   type: 3
   weight: 0
   cost: 150

@@ -16,7 +16,9 @@ MonoBehaviour:
   upgradeMaterial: {fileID: 0}
   Color: {x: 115, y: 0, z: 115}
   IndexInSpriteMap: 0
-  upgradeSprite: {fileID: -1065556033, guid: 7f38aebd73f79094295942964eeb21fa, type: 3}
+  upgradeSprite_B: {fileID: -1964968011727683196, guid: 8c3fb1dcbe4e3174b94926e8cee1813e, type: 3}
+  upgradeSprite_S: {fileID: -1964968011727683196, guid: 8c3fb1dcbe4e3174b94926e8cee1813e, type: 3}
+  upgradeSprite: {fileID: -1964968011727683196, guid: 8c3fb1dcbe4e3174b94926e8cee1813e, type: 3}
   type: 0
   weight: 20
   cost: 80

@@ -525,6 +525,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitScore
   points_to_give: 10
+--- !u!1 &344649301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 344649302}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &344649302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344649301}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 49.9409, y: -0.26306, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &344696165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3570,7 +3601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3888913956032844996, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
       propertyPath: currentMoney
-      value: 50
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 4533420748655884133, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -3586,7 +3617,7 @@ PrefabInstance:
       objectReference: {fileID: 154507795}
     - target: {fileID: 5011846203708141999, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
       propertyPath: upgrades.Array.size
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5011846203708141999, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
       propertyPath: 'upgrades.Array.data[0]'
@@ -3615,7 +3646,7 @@ PrefabInstance:
     - target: {fileID: 5011846203708141999, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
       propertyPath: 'upgrades.Array.data[6]'
       value: 
-      objectReference: {fileID: 11400000, guid: dc7de1c9cefb0d14fa80f5867bee6eaf, type: 2}
+      objectReference: {fileID: 11400000, guid: 5050a6bbb85e50c44b09f6ded403032b, type: 2}
     - target: {fileID: 5011846203708141999, guid: d5c59d1f66327b74aadbad6f98ed2a8f, type: 3}
       propertyPath: 'upgrades.Array.data[7]'
       value: 
@@ -4107,3 +4138,4 @@ SceneRoots:
   - {fileID: 964786522}
   - {fileID: 813524934}
   - {fileID: 930534500777708424}
+  - {fileID: 344649302}

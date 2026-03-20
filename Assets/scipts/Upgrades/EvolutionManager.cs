@@ -121,7 +121,7 @@ public class EvolutionManager : MonoBehaviour
 
             ingredientA.DestroyBallCleanUp();
             ingredientB.DestroyBallCleanUp();
-            // Debug.Log($"Znaleziono {upgradesForEvoBall.Count} upgradow dla tych kulxd!");
+           
             PinBallsManager.Instance.AddNewBallThroughEvolution(upgradesForEvoBall);
         }
         else

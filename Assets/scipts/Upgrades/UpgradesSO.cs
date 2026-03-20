@@ -8,6 +8,8 @@ public class UpgradesSO : ScriptableObject
     public Material upgradeMaterial;
     public Vector3 Color;
     public int IndexInSpriteMap;
+    public Sprite upgradeSprite_B;
+    public Sprite upgradeSprite_S;
     public Sprite upgradeSprite;
     public UpgradeType type;
     public int weight;
@@ -35,12 +37,14 @@ public class UpgradesSO : ScriptableObject
 
         ballRef.upgradeHolderUI.UpdateUpgradesSprites();
 
-         SpriteRenderer spriteRenderer = ballRef.GetComponent<SpriteRenderer>();
-         spriteRenderer.sprite = upgradeSprite;
+        SpriteRenderer spriteRenderer = ballRef.GetComponent<SpriteRenderer>();
+         //spriteRenderer.sprite = upgradeSprite;
         
-        ballRef.ballStatue.UpdateBallSprite();
+        
 
-        ColorShaderMixer.Instance.PassDataToSG(upgradeSprite, ballRef.Upgrades.IndexOf(this), ballRef.GetComponent<SpriteRenderer>());
+        ColorShaderMixer.Instance.PassDataToSG(upgradeSprite_B, upgradeSprite_S, ballRef.Upgrades.IndexOf(this), ballRef.GetComponent<SpriteRenderer>());
+
+        ballRef.ballStatue.UpdateBallSprite();
 
         return true;
       }
