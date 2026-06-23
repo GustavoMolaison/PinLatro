@@ -8,7 +8,7 @@ using UnityEngine;
 public class PinBallsManager : MonoBehaviour
 {
     public List<Ball> allBalls;
-    public List<Pinaballgate> pinaBallGates;
+    
 
     public Transform spawnBalls;
     public Transform waitingRoom;
@@ -22,9 +22,9 @@ public class PinBallsManager : MonoBehaviour
 
     public List<BallStatue> ballStatues = new List<BallStatue>();
 
-    public Ball ballToUpgrade;
+    [HideInInspector] public Ball ballToUpgrade;
 
-    public bool oneBallBlooming;
+    [HideInInspector] public bool oneBallBlooming;
 
     public GameObject newBallSpawn;
 
