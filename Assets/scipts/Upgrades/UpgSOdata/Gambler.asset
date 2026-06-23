@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: Gambler
   m_EditorClassIdentifier: Assembly-CSharp::UpgradesSO
   prefab: {fileID: 3592974353756965695, guid: f39099c09f37c634e879ad03b900e75c, type: 3}
-  upgradeMaterial: {fileID: 0}
-  Color: {x: 255, y: 32, z: 32}
   IndexInSpriteMap: 0
-  upgradeSprite_B: {fileID: 7914721542240370415, guid: 518b93f58f765c14591354aa83250d72, type: 3}
-  upgradeSprite_S: {fileID: -133987533764883801, guid: b53a99fee63495a45b2815a72bd67cdf, type: 3}
   upgradeSprite: {fileID: -7975792479327943879, guid: cedde9300a57cd54c949bd44cdb848e4, type: 3}
   type: 5
   weight: 40

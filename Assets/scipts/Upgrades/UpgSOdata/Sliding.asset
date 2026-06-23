@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: Sliding
   m_EditorClassIdentifier: Assembly-CSharp::UpgradesSO
   prefab: {fileID: 7760070793249404577, guid: 8531d25c6cb2a424a9157ed5c4c120b5, type: 3}
-  upgradeMaterial: {fileID: 0}
-  Color: {x: 0, y: 0, z: 0}
   IndexInSpriteMap: 0
-  upgradeSprite_B: {fileID: 187021253106685669, guid: 3385ba2c593be824685aa2bfbd8f8001, type: 3}
-  upgradeSprite_S: {fileID: -6853170356956324816, guid: 7e3fadf000aad0a4fa1f5ff4b3df1153, type: 3}
   upgradeSprite: {fileID: 9169877530624898698, guid: 65d4b8963ebf8b444982344ab32625ce, type: 3}
   type: 1
   weight: 60

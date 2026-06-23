@@ -98,6 +98,7 @@ public class Timer : MonoBehaviour
             {
                 Score_system.Instance.timeRemaining = 0;
                 isRunning = false;
+                Debug.Log("End timer");
                 EndTimer();
 
             }

@@ -109,8 +109,9 @@ public class Game_manager : MonoBehaviour
 
 
 
-            Scene activeScene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(activeScene.buildIndex);
+            //Scene activeScene = SceneManager.GetActiveScene();
+            UIManager.Instance.ShowCanvasGameOver();
+            //SceneManager.LoadScene(activeScene.buildIndex);
 
         }
 
@@ -127,7 +128,11 @@ public class Game_manager : MonoBehaviour
         UIManager.Instance.HideCanvasSkipInfo();
     }
 
-    
+    void resetButton()
+    {
+        Scene activeScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(activeScene.buildIndex);
+    }
 
     void GameOver()
     {

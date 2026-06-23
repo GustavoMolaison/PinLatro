@@ -13,12 +13,8 @@ MonoBehaviour:
   m_Name: Racer
   m_EditorClassIdentifier: Assembly-CSharp::UpgradesSO
   prefab: {fileID: 2180598481972371402, guid: 09a3a01289082cd4eb7ad9fda26387d7, type: 3}
-  upgradeMaterial: {fileID: 0}
-  Color: {x: 0, y: 200, z: 200}
   IndexInSpriteMap: 0
-  upgradeSprite_B: {fileID: -1890419821306530210, guid: 8851ba937de965e47a379c9cf15bebeb, type: 3}
-  upgradeSprite_S: {fileID: 8720604468809159126, guid: 7a65497191f2473458af7e9d667c91c7, type: 3}
-  upgradeSprite: {fileID: 5578857666172965735, guid: 02931b45c4104bd4da63e2e835ead411, type: 3}
+  upgradeSprite: {fileID: -9157642531378826532, guid: 64883da642c678f4e8e77e6cfe988f3c, type: 3}
   type: 2
   weight: 40
   cost: 60

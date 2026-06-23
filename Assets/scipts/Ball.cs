@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
+using static UnityEngine.Rendering.DebugUI;
 
 
 
@@ -66,6 +67,11 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
 
     public float pinballSize = 0.7f;
 
+    public float currenthue = 0;
+    public float currentsat = 0;
+    public float currentval = 1;
+
+
     void Start()
     {
         Collider = GetComponent<CircleCollider2D>();
@@ -91,6 +97,8 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
     public void AddUpgrade(UpgradesSO upgrade)
     {
         upgrade.ApplyEffect(this);
+        
+
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -422,6 +430,43 @@ public class Ball : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
 
     return (totalIntersectionArea / areaOfA) * 100f;
 }
+
+
+
+    public void changeColorHSV(float hue, float sat = 0.9f, float val = 0.8f)
+    {
+
+        if (Upgrades.Count == 1)
+        {
+            currenthue = hue;
+            currentsat = sat;
+            currentval = val;
+        }
+        else
+        {
+            //const float GOLDEN_RATIO_CONJUGATE = 0.61803398875f;
+            //currenthue = (currenthue + GOLDEN_RATIO_CONJUGATE) % 1.0f;
+
+            //Color col = Color.HSVToRGB(currenthue, sat, val);
+            //SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            //spriteRenderer.color = col;
+
+            // 1. Mały krok na kole barw - zachowuje relację z poprzednim
+            currenthue = (currenthue + 0.1f) % 1.0f;
+
+            // 2. Lekka zmiana nasycenia, żeby nie było monotonnie
+            // Robimy "ping-pong" nasycenia między 0.6 a 1.0
+            currentsat = 0.6f + Mathf.PingPong(Time.time * 0.5f, 0.4f);
+
+
+            Color col = Color.HSVToRGB(currenthue, currentsat, val);
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.color = col;
+            // 3. Zwracamy kolor, który jest "bratem" poprzedniego, a nie obcym
+        }
+            
+    }
+
 }
 
 

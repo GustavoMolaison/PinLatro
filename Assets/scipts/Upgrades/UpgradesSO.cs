@@ -5,12 +5,18 @@ using UnityEngine;
 public class UpgradesSO : ScriptableObject
 {
     public GameObject prefab;
-    public Material upgradeMaterial;
-    public Vector3 Color;
+    //public Material upgradeMaterial;
+    //public Vector3 Color;
     public int IndexInSpriteMap;
-    public Sprite upgradeSprite_B;
-    public Sprite upgradeSprite_S;
+
+    // Old grahpics methods
+    //public Sprite upgradeSprite_B;
+    //public Sprite upgradeSprite_S;
     public Sprite upgradeSprite;
+    /////////////////////////////
+
+    //public float hue;
+
     public UpgradeType type;
     public int weight;
     public int cost;
@@ -35,14 +41,18 @@ public class UpgradesSO : ScriptableObject
 
         ballRef.Upgrades.Add(this);
 
-        ballRef.upgradeHolderUI.UpdateUpgradesSprites();
+        //ballRef.changeColorHSV(hue);
+        //ballRef.upgradeHolderUI.UpdateUpgradesSprites();
+
+
 
         SpriteRenderer spriteRenderer = ballRef.GetComponent<SpriteRenderer>();
-         //spriteRenderer.sprite = upgradeSprite;
-        
-        
 
-        ColorShaderMixer.Instance.PassDataToSG(upgradeSprite_B, upgradeSprite_S, ballRef.Upgrades.IndexOf(this), ballRef.GetComponent<SpriteRenderer>());
+        spriteRenderer.sprite = upgradeSprite;
+
+        ballRef.upgradeHolderUI.UpdateUpgradesSprites();
+
+        //ColorShaderMixer.Instance.PassDataToSG(upgradeSprite_B, upgradeSprite_S, ballRef.Upgrades.IndexOf(this), ballRef.GetComponent<SpriteRenderer>());
 
         ballRef.ballStatue.UpdateBallSprite();
 

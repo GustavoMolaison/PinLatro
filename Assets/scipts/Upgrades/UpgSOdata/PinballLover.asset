@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: PinballLover
   m_EditorClassIdentifier: Assembly-CSharp::UpgradesSO
   prefab: {fileID: 6690590515245437791, guid: 6eb88ceaff1b5e84db1b3c58c0607874, type: 3}
-  upgradeMaterial: {fileID: 0}
-  Color: {x: 255, y: 32, z: 255}
   IndexInSpriteMap: 0
-  upgradeSprite_B: {fileID: -4033037043146813753, guid: 926489686e092934b965d0233180f676, type: 3}
-  upgradeSprite_S: {fileID: -7556092820660158538, guid: c3587be527a8add4bba51b977b0d4aac, type: 3}
   upgradeSprite: {fileID: -153864020050390714, guid: d3814367e4dc74a4dbda070fda77ea79, type: 3}
   type: 7
   weight: 50

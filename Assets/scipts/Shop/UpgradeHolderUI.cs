@@ -39,8 +39,10 @@ public class UpgradeHolderUI : MonoBehaviour
             Debug.Log($"Updating upgrade sprite for slot {i} with upgrade {EnrolledBall.Upgrades[i].name}");
             SpriteRenderer spriteRenderer = HolderCords[i].GetComponent<SpriteRenderer>();
             // spriteRenderer.material = EnrolledBall.Upgrades[i].upgradeMaterial;
-
-            spriteRenderer.sprite = EnrolledBall.Upgrades[i].upgradeSprite;
+            //SpriteRenderer sr_ball = EnrolledBall.GetComponent<SpriteRenderer>();
+            Sprite sr_ball = EnrolledBall.Upgrades[i].upgradeSprite;
+            spriteRenderer.sprite = sr_ball;
+            //spriteRenderer.sprite = EnrolledBall.Upgrades[i].upgradeSprite;
             // Debug.Log(i);
             // GameObject newSprite = Instantiate(EnrolledBall.Upgrades[i].VisualUIprefab, HolderCords[i].transform.position, Quaternion.identity);
             

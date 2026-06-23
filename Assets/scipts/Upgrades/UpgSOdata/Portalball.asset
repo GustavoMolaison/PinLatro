@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: Portalball
   m_EditorClassIdentifier: Assembly-CSharp::UpgradesSO
   prefab: {fileID: 4784893581171081413, guid: 877ff766ee9222d4f801fa5a27e5c8dd, type: 3}
-  upgradeMaterial: {fileID: 0}
-  Color: {x: 115, y: 0, z: 115}
   IndexInSpriteMap: 0
-  upgradeSprite_B: {fileID: -1964968011727683196, guid: 8c3fb1dcbe4e3174b94926e8cee1813e, type: 3}
-  upgradeSprite_S: {fileID: -1964968011727683196, guid: 8c3fb1dcbe4e3174b94926e8cee1813e, type: 3}
   upgradeSprite: {fileID: -1964968011727683196, guid: 8c3fb1dcbe4e3174b94926e8cee1813e, type: 3}
   type: 0
   weight: 20
